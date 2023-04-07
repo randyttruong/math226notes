@@ -1,0 +1,386 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Definitions / Theorems
+%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}{Definition}
+\newtheorem{thm}{Theorem}
+%%%%%%%%%%%%%%%%%%%%%%
+
+% Examples
+%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{remark*}{Example}
+\newtheorem*{definition*}{Meaning}
+%%%%%%%%%%%%%%%%%%%%%%
+
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{plain}{Symbol}
+%%%%%%%%%%%%%%%%%%%%%%
+
+% Real Numbers
+%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Math\_226 Notes}
+\author{Randy Truong}
+\begin{document}
+\maketitle
+\begin{sloppypar}
+  \tableofcontents
+
+% Sequences (Part One)
+\chapter{10.1 (Part One): Sequences (Part One) (03/28/23)}
+\section{Reminders}
+\begin{itemize}
+  \item The first MyLab homework is due on
+        \textbf{Wednesday, March 28, 2023}.
+        \begin{itemize}
+                \item Series (Part 0)
+        \end{itemize}
+  \item The first \textbf{written homework} is going to
+        be due on \textbf{Friday, March 31, 2023}.
+
+\end{itemize}
+
+\section{Objectives}
+\begin{itemize}
+  \item We want to be able to derive the concept of a
+        series and a sequence.
+  \item We want to be able to understand
+        where the idea of a series and sequence come from,
+        especially from seemingly-ordinary objects.
+  \item We want to explore the idea of a limit
+        in relation to a sequence.
+  \item We want to be able to discretely express
+        a sequence.
+
+\end{itemize}
+
+\section{Motivation}
+In former calculus classes, we have observed the idea of limits, derivatives, and integrals at face value. We
+know how to evaluate these different calculations, but
+what exactly do they mean in the context of math? How can
+we better observe what exactly happens in these calculations,
+and understand them outside the context of visualizing graphs
+or projectile motion.
+\section{A third...}
+
+% Sequences (Part Two)
+\chapter{10.1 (Part Two): Sequences (Part Two) (03/29/23)}
+\section{Reminders}
+\begin{itemize}
+  \item MyLab Math Assignment 1 - \textbf{Sequences (Part 0)} is
+        due \textbf{tonight, March 29, 2023}.
+  \item Written Homework 1 is due \textbf{Friday, March 31,
+        2023} at the \textbf{beginning of class}.
+  \item Friday's lesson is going to be over \textbf{sections
+        4.6 and 10.1} and we will be talking about \textbf{
+        Newton's Method. }
+\end{itemize}
+\subsection{Course Philosophy}
+Remember that the entire point of this class is to develop
+an intuition and a larger understanding and appreciation of
+calculus.
+\begin{center}
+  \textit{``Calculus is just algebra with a tiny drop of
+    limits''}
+\end{center}
+\section{Motivation}
+In the last class, we got our first taste of sequences
+by exploring the idea of a third and eventually relating it
+to the \textbf{geometric sequence}, which results in the formula
+of
+\[ a_{n} = \frac{1}{1-x}\]
+In this class, we were essentially taking our ``preview'' of
+sequences, actually defining different aspects of our sequence,
+doing operations on sequences, and finally, exploring
+one of the most important ideas of sequences, which are
+limit convergence and divergence, which led us to the famous
+$ \varepsilon - N $ proof, which is also known as the \textbf{precise
+definition of convergence.}
+\section{Sequences}
+\begin{center}
+  \fbox {
+    \parbox{\textwidth} {
+      \begin{definition}
+        Sequences
+      \end{definition}
+      A function with a domain of natural numbers and a co-domain
+      of real numbers.
+      \[ f: \N \rightarrow \R \]
+      \begin{definition*}
+      \end{definition*}
+      \par Although our intuition would tell us that a sequence
+        is just a list or a collection of numbers,
+        a sequence is more precisely just a function in which
+        we input an \textbf{index} (a natural number) and we
+        output a \textbf{term} (a real number). We, of course,
+        then, collect these outputs, and this is what we
+        generally see.
+        \begin{remark*}
+          \[ \{ a_{n} \}\]
+          \[ \{ a_{n}\}_{n=1}^{\infty}\]
+          \[ \{ a_{n}\}_{n=0}^{\infty}\]
+          \[ 1, 2, 3, 4, \dots\]
+          \[ 1.1, 2.2, 3.3, 4.4, \dots \]
+
+          \end{remark*}
+
+    }}
+\end{center}
+
+\section{Convergence}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Sequence Convergence
+      \end{definition}
+      \textbf{Informal Definition.}
+      \par A sequence $ \{ a_{n }\} $ converges to a limit $ L $
+      if the terms get arbitrarily close to $ L $ as $ n $
+      gets sufficiently large, which is also known as
+
+      \[ \lim_{n\rightarrow\infty}a_{n} = L \]
+      \par
+      \textbf{Formal Definition.}
+      \par A sequence $ \{ a_{n}\} $ converges to a limit $ L $
+      if, for every $ \varepsilon > 0 $, where $ \varepsilon $ is the distance from
+      the range to the limit $ L $, there exists such a number
+      that
+      \[ |a_{n}- L| < \varepsilon ~\textrm{for}~ n \geq N \]
+
+      The preceding expression is also known as the $ \varepsilon - N $ proof.
+      \[ \]
+    }}
+\end{center}
+
+\section{Divergence}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Sequence Divergence
+      \end{definition}
+      \textbf{Informal Definition.}
+      \par
+      A sequence diverges when it doesn't converge. If the sequence
+      $ \{ a_{n }\} $ does not get arbitrarily close to limit $ L $
+      as $ n $ gets sufficiently large. This is also known as
+      when the limit $ L $ \textbf{does not exist.}
+      \par
+      \[ \lim_{n\rightarrow\infty}a_{n} ~ \textrm{does not exist}\]
+      \textbf{Formal Definition.}
+      \par
+      A sequence $ { a_{n} }$ diverges to (positive) infinity if, for every
+      $ M > 0 $, there exists an N such that
+      \[ a_{n} > M ~ \textrm{whenever}~ n > M \]
+
+      Additionally, a sequence $ { a_{n} } $ diverges to negative
+      infinity, if, for every $ M < 0 $, there exists an $ N $
+      such that
+      \[ a_{n} < M ~ \textrm{whenever} ~ n > M \]
+
+    }
+  }
+\end{center}
+
+\section{$\varepsilon-N$ Proof}
+In this proof, we are proving the existence of a limit
+when given a sequence $a_{n}$
+\section{Properties of Sequence Limits}
+
+% Sequences (Part Three)
+\chapter{10.1: Sequences (Part 3) (03/31/23)}
+\section{Summary of Lesson}
+In this lesson, we further develop the idea of convergence
+and divergence by \textbf{expanding it to non-elementary sequences}. We
+apply several new theorems as a result of this, such as the
+Sandwich Theorem. The homework, as a result, is all about
+convergence and divergence, testing on how well we are
+able to determine convergence and divergence given sequences
+including factorials, logarithms, and exponential functions.
+\section{Reminders}
+\begin{itemize}
+  \item The \textbf{third MyLab Math assignment} (Sequences
+        (Part 2)) is due on \textbf{Tuesday, April 3rd}.
+  \item The second written assignment is due on \textbf{
+        Friday, April 7, 2023}.
+\end{itemize}
+\section{Motivation}
+
+
+In the previous lesson, we learned about the \textbf{precise
+  definition of convergence and divergence}. We learned about
+what exactly convergence and divergence means, and we were
+able to apply these concepts to various elementary sequences.
+However, what if we were given a sequence like
+\[ \{a_{n}\} = \frac{\cos(n)}{n}\]
+Additionally, what if we were given a sequence like
+\[ \{a_{n}\} = \Biggr( 1 + \frac{x}{n} \Biggr)^{n}\]
+
+These sequences are undoubtedly more complex than our former
+examples and are not nearly as intuitive whenever it comes to
+actually solving them.
+\par Therefore, we need to learn a few more \textbf{theorems} as
+well as \textbf{techniques} in order to determine convergence
+and divergence in more complex sequence functions.
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Sandwich Theorem
+      \end{thm}
+      Let $ \{a_{n}\}$, $ \{b_{n}\}$, $ \{ c_{n}\}$ be sequences
+      of real numbers. If $ a_{n} \leq b_{n} \leq c_{n} $ holds for all
+      $ n $ beyond some index $ N $, and if $ \lim_{n \rightarrow \infty }a_{n} =
+      \lim_{n \rightarrow \infty } c_{n}= L $, then $ \lim_{n \rightarrow L } b_{n} = L $ also.
+      \[ \textrm{let}~ \{a_{n}\},\{b_{n}\}, \{c_{n}\} ~ \textrm{
+          be sequences
+        }\]
+      \[ \textrm{if}~ a_{n} \leq b_{n} \leq c_{n}~\textrm{and}  \]
+      \[ \lim_{n \rightarrow \infty}a_{n} = L~\textrm{and}~\lim_{n \rightarrow \infty}c_{n}= L,~
+        \textrm{then}\]
+      \[ \lim_{n \rightarrow \infty} b_{n} = L\]
+    }
+  }
+\end{center}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        The Continuous Function Theorem For Sequences
+      \end{thm}
+
+    }
+  }
+\end{center}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Other Theorem
+      \end{thm}
+
+    }
+  }
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      Theorem 5
+    }
+  }
+\end{center}
+
+
+
+
+\chapter{4.6, 10.1: Finishing Sequences +  Newton's Method (04/03/2023)}
+\section{Reminders}
+\begin{itemize}
+  \item The \textbf{third MyLab Math assignment} (Sequences
+        (Part 2)) is due on \textbf{Tuesday, April 3rd}.
+  \item The second written assignment is due on \textbf{
+        Friday, April 7, 2023}.
+\end{itemize}
+\section{Motivation}
+\chapter{10.2 (Part One): Infinite Series (Part One)}
+\section{Reminders}
+\begin{itemize}
+  \item The \textbf{third MyLab Math assignment} (Sequences
+        (Part 2)) is due on \textbf{Tuesday, April 3rd}.
+  \item The second written assignment is due on \textbf{
+        Friday, April 7, 2023}.
+\end{itemize}
+
+\section{Motivation}
+\chapter{10.2 (Part Two): Infinite Series (Part Two) (04/05/23)}
+\section{Reminders}
+\begin{itemize}
+  \item The \textbf{third MyLab Math assignment} (Sequences
+        (Part 2)) is due on \textbf{Tuesday, April 3rd}.
+  \item The second written assignment is due on \textbf{
+        Friday, April 7, 2023}.
+\end{itemize}
+
+\section{Motivation}
+\chapter{10.3: The Integral Test (04/07/23)}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.4: Comparision Tests (04/10/23)}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.5: Absolute Convergence and the Ratio Test}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.6: Alternating Series and Conditional Convergence}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.6: Strategies for Analyzing Convergence}
+\section{Reminders}
+\section{Motivation}
+%%%%%%%%%%%% MIDTERM 1 DONE %%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{10.7 (Part One): Power Series}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.7 (Part Two): Radius and Interval of Convergence}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.7 (Part Three): Manipulation of Series (Part One)}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.7 (Part Four): Manipulation of Series (Part Two)}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.8 (Part One):}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.8 (Part Two):}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.9: Convergence of Taylor Series}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.10: Applications of Taylor Series}
+\section{Reminders}
+\section{Motivation}
+\chapter{A7 (Part One): Complex Numbers (Part One)}
+\section{Reminders}
+\section{Motivation}
+\chapter{10.10, A7 (Part Two): Complex Numbers (Part Two)}
+\section{Reminders}
+\section{Motivation}
+\chapter{19.1 (Part One): Vectors}
+\section{Reminders}
+\section{Motivation}
+\chapter{19.1 (Part Two): Inner Products}
+\section{Reminders}
+\section{Motivation}
+%%%%%%%%%%%% MIDTERM 2 DONE %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{19.2 (Part One): Functions as Vectors, Periodic
+  Functions}
+\section{Reminders}
+\section{Motivation}
+\chapter{19.2 (Part Two): Fourier Series, Demos}
+\section{Reminders}
+\section{Motivation}
+\chapter{19.3: Fourier Series, Theory}
+\section{Reminders}
+\section{Motivation}
+\chapter{19.5 (Part One): Applications (Part One)}
+\section{Reminders}
+\section{Motivation}
+\chapter{19.5 (Part Two): Applications (Part Two)}
+\section{Reminders}
+\section{Motivation}
+\end{sloppypar}
+
+\end{document}

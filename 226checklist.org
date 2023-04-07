@@ -1,0 +1,34 @@
+#+title: 226checklist
+#+description: This is a checklist of all of the topics from MATH_226-0: Sequences and Series (AKA Calculus 2)
+
+* Canez' Notes
+
+* Sequences
+* Sequences (Part 2)
+* Newton's Method
+* Infinite Series
+* More on Series
+* Integral Test
+* Comparison Test
+* Ratio Test & Absolute Convergence
+* Alternating Series Test
+* Convergence Strategies
+* Power Series
+* Interval of Convergence
+* Power Series
+* Interval of Convergence
+* Series Manipulations
+* More on Manipulations
+* Taylor Series
+* Taylor Polynomials
+* Taylor Remainders
+* More Series Estimates
+* Complex Numbers
+* Complex Exponentials
+* Second-Order Differential Equations
+* More on Homogeneous Equations
+* Nonhomogeneous Equations
+* More on Nonhomogeneous Equations
+* Spring Motion
+* Series Solutions
+* More on Series Solutions
