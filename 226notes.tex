@@ -100,7 +100,7 @@ In this class, we were essentially taking our ``preview'' of
 sequences, actually defining different aspects of our sequence,
 doing operations on sequences, and finally, exploring
 one of the most important ideas of sequences, which are
-limit convergence and divergence, which led us to the famous
+limit convergence divergence, which led us to the famous
 $ \varepsilon - N $ proof, which is also known as the \textbf{precise
 definition of convergence.}
 \section{Sequences}
@@ -254,18 +254,53 @@ and divergence in more complex sequence functions.
   \fbox{
     \parbox{\textwidth}{
       \begin{thm}
-        The Continuous Function Theorem For Sequences
+        The Continuous Function Theorem For Sequences (Theorem 3)
       \end{thm}
-
+      Let $ \{a_n\}$ be a sequence of real numbers $ \R $. If $ a_{n} \rightarrow L $ and if $ f $ is a function
+      that is continuous at $ L $ and defined at all $ a_{n}$ then $ f(a_{n}) \rightarrow f(L) $.
+      \\
+      \\
+      \textbf{Informal Definition.}
+      \\
+      Essentially, as long as we know that if a sequence $ a_{n}$ exists and approaches some limit $ L $, we are able to say that
+      if some function $ f $ is also continuous and the value $ f(L)$ exists and that the function $ f$ is defined for all terms
+      in the sequence $ a_{n}$, then we know that the function with a domain of the terms of the sequence $ a_{n}$, which we
+      represent as $ f(a_{n})$ will approach the value of the function $ f $ at the limit $ L $, which is also represented as the
+      function $ f(L)$.
     }
   }
+
+  \subsection{Importance of the Continuous Function Theorem for Sequences }
+  The implication of the continous function theorem for sequences, of course, is that we can derive smaller, more
+  trivial functions from a larger function. For example, if we were trying to solve for
+  \[ \lim_{n \rightarrow \infty} \sqrt{\frac{2n}{n+1}}\]
+  by using the \textbf{continuous function theorem for sequences}, we are able to separate this problem into a function, in
+  which the domain is just a sequence $ a_{n}$ (or another function).
+  \[ \textrm{let} ~ f(x) = \sqrt{x}, ~ \textrm{let} ~ x(n) = \frac{2n}{n+1} \]
+  Now, we are able to evaluate the limit of the inner function.
+  \[ \lim_{n \rightarrow \infty} \frac{2n}{n+1} \Rightarrow \frac{2n/n}{n/n+1/n} \Rightarrow \frac{2}{1} \Rightarrow 2 \]
+  Knowing that the domain of the function $ f(x) $ will always approach 2, we are able to evaluate the outer limit.
+  \[ \lim_{n \rightarrow \infty} \sqrt{\frac{2n}{n+1}} \Rightarrow \lim_{n \rightarrow \infty} \sqrt{2} = \sqrt{2}\]
+
+
 \end{center}
 \begin{center}
   \fbox{
     \parbox{\textwidth}{
       \begin{thm}
-        Other Theorem
+        Theorem 4. (L'Hopital's Rule)
       \end{thm}
+      Suppose that $ f(x)$ is a function defined for all $ x \geq n_{0}$ and that $ \{a_{n}\}$ is a sequence of real numbers
+      $ \R $ such that $ a_{n} = f(n)$ for $ n \geq n_{0}$. Then,
+      \[ \lim_{n \rightarrow \infty } a_{n} = L ~\textrm{wherever}~ \lim_{n \rightarrow \infty}f(x) = L \]
+
+      \\
+      \textbf{Warning.}
+      We cannot say the same about the converse of this theorem. That is, we  cannot say that as long as a sequence approaches
+      infinity, that a function $ f $ with a domain of the terms of the sequence $ a_{n} $ will converge at a a limit $ L$.
+      For example, imagine that if we had some high-degree polynomial expression and we had a sequence that converged at 0. The function itself might have several roots, as it will intersect the x-axis numerous times at zero. Ultimately however,
+      the polynomial might not approach 0, but value of the function at the terms $ a_{n}$ might suggest it does.
+
 
     }
   }
@@ -274,7 +309,20 @@ and divergence in more complex sequence functions.
 \begin{center}
   \fbox{
     \parbox{\textwidth}{
-      Theorem 5
+      \begin{thm}
+        Theorem 5. (Commonly Occuring Limits)
+      \end{thm}
+      The following six sequences converge to the following limits listed below:
+      \begin{enumerate}
+        \item $ \lim_{n \rightarrow \infty} \frac{\ln(n)}{n} = 0 $
+        \item $ \lim_{n \rightarrow \infty} \sqrt[n]{n} = 1 ~ \Longleftrightarrow ~ \lim_{n \rightarrow \infty} n^{1/n} = 1 $
+
+        \item $ \lim_{n \rightarrow \infty} x^{1/n} = 1 ~ \textrm{for all} ~ (x > 0)$
+        \item $\lim_{n \rightarrow \infty} x^{n} = 0 $
+        \item $ \lim_{n \rightarrow \infty} \Biggr( 1 + \frac{x}{n}\Biggr)^{n} = e^{x} ~\textrm{for all $ x $}$
+        \item $ \lim_{n \rightarrow \infty} \frac{x^{n}}{n!} = 0 ~ \textrm{for all $ x $}$
+
+      \end{enumerate}
     }
   }
 \end{center}
@@ -288,44 +336,906 @@ and divergence in more complex sequence functions.
   \item The \textbf{third MyLab Math assignment} (Sequences
         (Part 2)) is due on \textbf{Tuesday, April 3rd}.
   \item The second written assignment is due on \textbf{
-        Friday, April 7, 2023}.
+        Monday, April 10th, 2023}.
 \end{itemize}
-\section{Motivation}
-\chapter{10.2 (Part One): Infinite Series (Part One)}
-\section{Reminders}
+\section{Recall}
+In the previous section, remember how we essentially continued to enrich our understanding of sequences and limits.
+More specifically, we learned a few more theorems about sequence convergence and divergence.
+\par First, let's start by actually talking about some patterns we see with the behavior of sequences. Recall
+that when we talk about sequences, we are essentially just talking about a function, in which the domain are the indices of the
+sequence (which indicate the position of the elements within the sequence) of which are natural numbers, that have a range of real numbers.
+\par Convergence and divergence in a sequence refers to whether or not the sequence approaches some tangible, finite number
+as the domain of the sequence (the indices) approach infinity. This, of course, is the \textbf{informal definition of
+  sequence convergence}.
+\par The \textbf{formal definition of sequence convergence} states that, in order for a sequence to converge to some value $ L $, there must exist some value $ \varepsilon $ after some point $ N $ in the sequence, in which all terms $ a_{n} $ of the sequence for $ n > N $ satisfy
+\[ | a_{n} - L | < \varepsilon ~\textrm{where} ~ n > N \]
+
+This basically states that, after some point in the sequence (denoted by the index $ N $), all terms of the sequence $ a_{n}$ must
+fall within the range $ ( L - \varepsilon, L + \varepsilon )$, where $ \varepsilon $, of course, represents any arbitrarily small number.
+\par Likewise, we can state that a sequence \textbf{diverges} when this behavior doesn't occur, which makes sense, as if there
+exists no point in the sequence $ N $ where all consecutive terms all exist within some infinitesmially small range, then they
+simply cannot be approaching any number in the first place.
+\par In addition to this basic idea of convergence, we also learn about some restrictions as well as some implications that
+arise from convergence.
+\par For example, if we simply just want to determine whether or not a sequence converges, all we have to do is just solve
+for the limit of that sequence. We just treat the sequence $ a_{n} $ as some function $ f(n) $ for all $ a_{n} $. This, of course
+has a ton of different implications.
 \begin{itemize}
-  \item The \textbf{third MyLab Math assignment} (Sequences
-        (Part 2)) is due on \textbf{Tuesday, April 3rd}.
-  \item The second written assignment is due on \textbf{
-        Friday, April 7, 2023}.
+  \item The \textbf{Sandwich Theorem} states that, if we have three sequences $ \{ a_{n}\} \{b_{n}\} \{c_{n}\}$, and that the
+        sequence $ a_{n} $ approaches $ L$, and that the sequence $ c_{n} $ approaches $ L $, if the sequence $ b_{n} $ is
+        between $ a_{n}$ and $ c_{n}$ (that is, $ a_{n} \leq b_{n} \leq c_{n}$), then $ \lim_{n \rightarrow \infty} b_{n} = L $.
+        \[ \textrm{let} ~ \{a_{n}\}, \{b_{n}\}, \{c_{n}\}\]
+        \[ \textrm{if} ~ \lim_{n \rightarrow \infty}a_{n} = L = \lim_{n \rightarrow \infty}c_{n}=L\]
+        \[ \lim_{n \rightarrow \infty} a_{n} \leq \lim_{n \rightarrow \infty} b_{n} \leq \lim_{n \rightarrow \infty} c_{n}\]
+        \[ \lim_{n \rightarrow \infty} b_{n} = L \]
+  \item The \textbf{Continuous Function Theorem for Sequences} states that, if we have a function that is continuous for
+        all values of $ x \geq n_{0}$ (such that $ n_{0}$ is the initial index of a sequence) and that there is a corresponding
+        sequence $ a_{n} $ such that $f $ is defined and continuous for all values $ a_{n}$ and is continuous at $ L $, then
+        we are able to say that the function of the domain $ a_{n}$ approaches the function value of the limit $ L $.
+
+        Essentially, from this informs us that if there is a function $ f $ that is defined for all values of a sequence $ a_{n}$,
+        as long as the $ a_{n} $ converges at a limit $ L $, then function $ f $ of which its domain is an expression of $ n $$
+        a_{n} $, then the function $ f(a_{n}) $ must converge at $ f(L) $. This allows us to state that if we are trying to
+        find evaluate the limit of a function, we are able to dissect the function into an outer function $ f(x) $ and an
+        inner expression $ x(n) $. The procedure from here is that we are able to find the limit of this inner function $ x(n) $,
+        substitute it as the domain of the outer function, then evaluate the final limit of the outer function.
+  \item Additionally, like all other limits, we are able to evaluate the value at which a sequence converges to
+        by using \textbf{L'Hopital's Rule}. The technical definition of L'Hopital's Rule states that if there exists a function
+        $ f(n) = a_{n}$, then the limit of the function $ \lim_{n \rightarrow \infty} f(n) = L $ always implies that
+        $ \lim_{n \rightarrow \infty} a_{n} = L $. If we are able to evaluate the limit of the sequence as a limit of a function,
+        then we are able to assert that the limit of the sequence is equal to the limit of that function. On the converse,
+        however, we are unable to assert that if a function converges at a limit, then the sequence of that function will
+        also converge at that limit. This all really just comes down to the idea that sequences are not functions.
+  \item Finally, after this, there are just some important, well-known and already proven sequence convergences that
+        I will be tested on. It is important to understand these for later, since they are pretty essential to solving
+        many future sequence problems.
+
+
 \end{itemize}
 
 \section{Motivation}
-\chapter{10.2 (Part Two): Infinite Series (Part Two) (04/05/23)}
+For this lecture, we are literally just finishing up sequences and getting ready to move onto the next topic, series. We spent
+this class just learning about one final piece of the puzzle in series, which is \textbf{monotonicity} and the
+\textbf{monotonicity convergence theorem}.
+\section{Types of Sequences}
+Recall that through this section, we have thought about sequences in two different ways: \textbf{explicitly} and
+\textbf{recursively}.
+\subsection{Explicit Sequences}
+An explicit sequence is a sequence in which the value of the term of the sequence $ a_{n}$ is determined only by the
+index $ n $. We don't need information about other terms in the sequence, as we are able to compute the value of any
+term of the sequence \textit{solely} based on its position.
+\subsection{Examples of Explicit Sequences}
+\[ a_{n} = n + 1, ~ a_{n} = \frac{n}{2} \]
+\subsectoin{Recursive Sequences}
+A \textbf{recursive sequence} is a sequence in which the value of a term in the sequence is computed using the previous
+term of the sequence. It might be helpful to think of this as recursion in computer science, as we are literally just taking
+a previous output as input in this function. Generally, whenever we denote a recursive function, we will say that the
+term FOLLOWING the current term is equal to some expression of the current term.
+\subsection{Examples of Recursive Sequences}
+\[ a_{n+1} = a_{n} + 1, ~ a_{n+1} = \frac{a_{n}}{2}\]
+
+
+
+\section{Defining Divergence}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Sequence Divergence (Towards Infinity)
+      \end{definition}
+      A sequence $ \{ a_{n} \}$ diverges to positive infinity if for all $ M $, there is an $ N $ such that $ a_{n} > M $
+      for all $ n > N $
+     }
+  }
+\end{center}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Sequence Divergence (Towards Negative Infinity)
+      \end{definition}
+      A sequence $ \{ a_{n}\}$ diverges to negative infinity if for all $ M $, there is an $ N $ such that $ a_{n} < N $ for
+      all $ n > N $.
+     }
+  }
+\end{center}
+
+When we read these definitions, we can imagine that the $ M $ is just some upper and lower bound or threshold. If, after
+some point in the sequence $ a_{n} $, all subsequent terms $ a_{n} $ are all above or below a particular threshold, it makes
+sense that they would just approach infinity. This idea of divergence, however, all depends on the idea of
+\textbf{monotonicity}.
+
+\section{Monotonicity}
+\textbf{Monotonicity} defines a sequences general shape and behavior. A series is monotonous as long all of its values
+all pertain to some behavior.
+\\
+\subsection{Nondecreasing Monotonic Sequences}
+A \textbf{nondecreasing monotonic sequence} is a sequence in which, as the name suggests, the terms do not decrease.
+More precisely, we can say that
+\[ a_{n} \leq a_{n+1} \]
+\subsection{Nonincreasing Monotonic Sequences}
+A \textbf{nonincreasing monotonic sequence} is a sequence in which the terms do not increase. More precisely,
+\[ a_{n} \leq a_{n+1} \]
+
+\subsection{Monotonic Convergence}
+We can apply the idea of monotonicity, that is, the idea that a function bears only a single behavior into limits. In fact,
+there is actually an entire theorem dedicated to this idea.
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Monotonic Convergence Theorem
+      \end{thm}
+      If a sequence \[ \{a_{n}\}\] is both bounded and monotonic, then it converges.
+
+      \textbf{Informal Definition.}
+      \\
+      For a sequence is a nonincreasing, that is $ a_{n} \geq a_{n+1} $, if all terms after some point $ N $ are
+      less than or equal to the greatest possible lower bound $ L $, then we can
+      say that the bounded, monotonicaly nonincreasing sequence $ a_{n}$ converges at that greatest possible lower bound $ L $.
+      \\
+      Likewise, for a sequence that is nondecreasing, or $ a_{n} \leq a_{n+1}$, if all terms after some point $ N $ are
+      less than or equal to the least possible upper bound $ L $, then we can say that the bounded monotonically nondecreasing
+      sequence $ a_{n} $ converges at $ L $.
+    }
+  }
+\end{center}
+
+\section{Newton's Method}
+TODO
+
+\section{Introduction to Series}
+A series is just an expression of the form
+\[ a_{1} + a_{2} + a_{3} + a_{4} + \cdots \]
+Imagine that we are just taking a sequence  $ a_{n}$ and then
+we are just trying to find the sum of the terms $ a_{n} $ for
+all values of $ n $.
+\\
+This, howver, is particularly hard to compute, since after all
+,if we were trying to find the sum of an infintie amount
+of termsl ike in the following series
+\[ \sum_{n=1}^{\infty} a_{n}\]
+would be impossible. In order to mediate this, we have a
+few tricks in which we can actaully break up series in order
+to the actual sum of the series.
+
+\subsection{Sequence of Partial Sums }
+In the previous section, we just introduced the idea of a
+sequence. A sequence, of course its composed of its terms $ a_{n}$ as well as its indices $ n $. For sake of argument, however, let us consider having a sequence in which each term is the sum of the current term and all of the terms preceding it. For reference
+\[ \textrm{let} ~ \{a_{n}\} \]
+\[ S_{1} = a_{1}\]
+\[ S_{2} = a_{1} + a_{2}\]
+\[ S_{3} = a_{1} + a_{2} + a_{3}\]
+\[ S_{4} = a_{1} + a_{2} + a_{3} + a_{4} \]
+\[ S_{n} = a_{1} + a_{2} + a_{3} + a_{4} + \cdots \]
+
+Notice that the sequence of partial sums for $ n $ terms
+looks \textbf{suspiciously} simialr to the idea of infinite
+series\dots because it they're the same thing! Whenever we
+are thinking of a series, we can just contextualize it as
+just being a sequence of partial sums for the $ n $th term.
+\\
+This recontextualization of the series as just a sequence
+of partial sums to the $ n$th term (as opposed to the
+first term of the second term), is very \textbf{powerful},
+since it will grant us a beter understanding of how exactly
+the the series works, how to compute operations with it,
+as well as working with series convergence and divergence.
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Sequence of Partial Sums
+      \end{definition}
+      Given a sequence of numbers $ \{ a_{n}\}$, an
+      expresssion of the form
+      \[ a_{1} + a_{2} + a_{3} + a_{4} + \cdots \]
+      is called an \textbf{infinite series}. The number $ a_{n} $ is the \textbf{$n$th term} of the series. The
+      sequence $ \{ S_{n}\}$ defined by
+      \[ s_{1} = a_{1} \]
+      \[ s_{2} = a_{1} + a_{2}\]
+      \[ s_{n} = a_{1} + a_{2} + \cdots + a_{n-1} + a_{n}
+        = \sum_{k=1}^{n} a_{k }\]
+      is the \textbf{sequence of partial sums} of the series,
+      the number $ s_{n} $ begin the \textbf{$ n$th partial
+        sum.} If the sequence of partial sums converges
+      to a limit $ L $, we say that the series \textbf{
+        converges} and that its \textbf{sum} is $ L $.
+    }
+  }
+\end{center}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Sequence of Partial Sums (cont'd.)
+      \end{definition}
+      \textbf{Intuition.}
+      \\
+      Previously, we talked about this idea of contextualizing
+      a series as the sum of a sequence up until a certain
+      point. For example,
+
+      \[ \sum_{n=1}^{2}a_{n} = a_{1} + a_{2}\]
+      \[ \sum_{n=1}^{3}a_{n} = a_{1} + a_{2} + a_{3}\]
+
+      This is all pretty cool, but lets apply this
+      idea of finding the series of every single term in a
+      sequence $ a_{n} $ and then putting these series (which, of course, really only refers to the sum
+      of the series) \textbf{within a sequence}.
+
+      \[ \{S_{n}\}  = S_{1} + S_{2} + S_{3} + \cdots +
+      S_{n} \]
+    \[ \{S_{n}\} = \sum_{n=1}^{1} a_{n} + \sum_{n=1}^{2} a_{n} +
+    \sum_{n=1}^{3} a_{n} + \cdots + \sum_{n=1}^{n} a_{n} \]
+
+  Note, the sequence of partial sums is \textbf{not
+    equivalent} to the series itself. (After all, the sequence of partial sums is literally just a
+  sequence and additionally, the series we are
+  analyzing is just a term within the sequence). The
+  sequence of partial sums is just a
+  collection of all possible series up until our
+  given series $ n $. This
+  is useful, because we can think of the value or sum of the
+  series as being equal to the limit of the sequence
+  of its partial sums. This idea of thinking of the
+  value of a series as the limit of sequence of partial
+  sums at some point $ n $ is extremely powerful and allows
+  us to work within the framework of series convergence
+  and divergence.
+    }
+  }
+\end{center}
+
+\subsection{Methodology for solving for the sum of a series}
+In order to solve for the sum of a series, we again have
+to consider numerous factors:
+\begin{itemize}
+  \item The series $ \sum_{n=1}^{\infty} a_{n}$ can also be represented as the point of convergence or limit for the sequence of partial sums $ \{ S_{n}\} $ where
+        \[ S_{n} = \sum_{n=1}^{1} a_{n} + \sum_{n=1}^{2} a_{n} +
+        \cdot + \sum_{n=1}^{n} a_{n}\]
+  \item We know how to compute the limit $ L $ or point of
+        convergence of a sequence, as well as how to
+        determine whether not a sequence actually
+        converges or not.
+\end{itemize}
+From this, we can consider the following steps:
+\begin{enumerate}
+  \item Let the terms of the series be a sequence.
+  \item Evaluate the partial sums for the first few terms.
+  \item Determine the ``pattern'' between these
+        terms.
+        \begin{itemize}
+          \item The ``pattern'' here is eventually
+                going to transform into the ``function'' of
+                a sequence. We are going to determine a
+                rule between the partial sums.
+        \end{itemize}
+
+  \item Let this pattern be a function/algorithm for
+        computing future terms.
+  \item Let this pattern be the function of a
+        sequence of partial sums $ \{S_{n}\} $
+  \item Determine whether or not the sequence of partial
+        sums $ \{S_{n}\} $ converges or diverges. If the
+        sequence converges, then determine at what point
+        it converges to. The point at which the sequence
+        of partial sums converges to, or the result of
+        the series at some point $ n $, is going to be
+        known as the \textbf{sum} of that series.
+
+\end{enumerate}
+
+\section{Example of Series Sums}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{remark*}[\textbf{1}]
+        Determine the sum of the series
+        \[ 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} +
+        \frac{1}{16} + \cdots \]
+      \end{remark*}
+      \textbf{Step 1:} Let the terms of the series
+      be a sequence.
+      \[ \textrm{let} ~ \{a_{n}\} = 1, \frac{1}{2},
+        \frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \cdots \]
+      \textbf{Step 2:} Evaluate the partial sums for
+      the first few terms of the sequence (which we made
+      through the terms of the series).
+      \[ \textrm{let} ~ \{S_{n}\} ~\textrm{be the sequence
+          of partial sums for $ a_n $ } \]
+      \[ \{S_{n}\} = S_{1}, S_{2}, S_{3}, \cdots, S_{n}\]
+      \[ S_{1} = 1 = 1 \]
+      \[ S_{2} = 1 + \frac{1}{2}  = \frac{3}{2}\]
+      \[ S_{3} = 1 + \frac{1}{2} + \frac{1}{4} = \frac{7}{4} \]
+      \[ S_{n} = 1 + \frac{1}{2} + \frac{1}{4} +
+      \frac{1}{8} + \cdots + \frac{1}{2^{n-1} } = \frac{2^{n} - 1 }{2^{n-1}}\]
+
+    }
+  }
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{remark*}[\textbf{(1) cont'd}]
+      \end{remark*}
+      \textbf{Step 3:} Let the pattern in the sequence of
+      partial sums be the function of the sequence of partial
+      sums.
+      \[ \textrm{let $S_{n}$} ~ = \frac{2^{n}-1}{2^{n-1}}\]
+      \textbf{Step 4:} Determine whether or not the
+      sequence of partial sums converges or diverges.
+      Find the limit if the sequence converges.
+      \[ \lim_{n \rightarrow \infty} S_{n} =
+        \lim_{n \rightarrow \infty} \frac{2^{n}-1}{2^{n-1}}\]
+      \[ \Rightarrow \lim_{n \rightarrow \infty } \frac{2^{n}}{2^{n-1}} - \lim_{n \rightarrow \infty } \frac{1}{2^{n-1}}\]
+      \[ \Rightarrow 2 - 0 \]
+      \[ \lim_{n \rightarrow \infty} \frac{2^{n}-1}{2^{n-1}} = 2 \]
+      \textbf{Step 5:} Let the limit or point of convergence
+      of the sequence of partial sums be the
+      sum of the series in question.
+      \[ 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} +
+        \cdots = \lim_{n \rightarrow \infty} \frac{2^{n}-1}
+        {2^{n-1}} = 2 \]
+
+      The sum of the series given by $ 1 + \frac{1}{2} +
+      \frac{1}{4} + \frac{1}{8} + \cdots $ is 2.
+    }}
+\end{center}
+
+\subsection{Series Notation}
+Whenever we are trying to denote a sequence, we observe
+the following kinds of notation:
+\[ \textrm{let} ~ a_{n} ~\textrm{be some expression for $ n $}\]
+\[ \sum_{n=1}^{\infty} a_{n}, ~ \sum a_{n}\]
+The left notation $ \sum_{n=1}^{\infty} a_{n}$, of course, is more specific, letting us know what index
+we should start the series at as well as giving us a terminal point,
+which although strange, is just infinity in the case of the first example.
+\\
+\\
+In the second case $ \sum a_{n}$, we are just demonstarting that $ a_{n}$ is just a series,
+similar to how we just denote sequences with just curly braces $ \{ a_{n}\}$.
+
+\subsection{Introduction to Series Convergence and Series Divergence}
+Again, just to reiterate what we have learned in the past section, whenever we are rying to determine whether or not a series converges or diverges, we are essentially trying ot determine whether the sum or the evaluation of the series is going to be some finite number. We can always try to imagine this kind of like a Riemann sum beneath a curve
+\begin{itemize}
+  \item Recall that whenever we were trying to solve a
+        Riemann sum, we were always trying to estimate the
+        area underneath a curve by using rectangles. In
+        that same kind of sense, we are trying to see
+        if the sum generated by the series, which is
+        going to be one of these ``rectangels'' beneath
+        the graph of a function of the series, is going
+        to be finite.
+\end{itemize}
+
+So, in order to determine whether or not a series is
+convergent or divergent, we first have to transform
+the series into a sequence of partial sums, where the
+domain of course is going to be natural numbers that
+are determiend by the indicies of the sequence and the
+range is going to be determined by the sum of the
+sequence of hte function (which is distince from
+the sequence of partial sums) at that point.
+\\
+Therefore, when the sequence of partial sums converges,
+this can be thought of as the series if the series
+just appproaches infinity.
+\\
+Whenever we are trying to determien whether or not the
+series diverges, we just want to see if the sequence
+of partial sums that we obtain through the series
+actually converges or not. Whenever the sequence of
+partial sums does not converge, then it must diverge.
+
+
+% 10.2 (Part One): Infinite Series (Part One) (4/05/23)
+\chapter{10.2 (Part One): Infinite Series (Part One) (4/05/23)}
 \section{Reminders}
 \begin{itemize}
-  \item The \textbf{third MyLab Math assignment} (Sequences
-        (Part 2)) is due on \textbf{Tuesday, April 3rd}.
+  \item The \textbf{fifth MyLab Math assignment: Infinite Series}, will be due on
+        \textbf{Sunday, April 9th, 2023}.
+
   \item The second written assignment is due on \textbf{
-        Friday, April 7, 2023}.
+        Monday, April 10th, 2023}.
 \end{itemize}
 
 \section{Motivation}
-\chapter{10.3: The Integral Test (04/07/23)}
+In the last section, we obtained a taste of what
+series were and how we are able to interpret them. Most
+prominently, we can imagine that a series can be considered
+as a term in a sequence, where all other terms in the
+sequence are just series up until a particular point.
+This concept is known as the \textbf{sequence of partial
+  sums}. Whenever we are evaluating the sequence of partial
+sums, it is important that we understand this distinction.
+
+\par Recall that we denote sequences with the following notation:
+\[ \sum_{n}^{k} a_{n} ~\textrm{for the specific case }\]
+\[ \sum a_{n} ~\textrm{for the general case}\]
+\[ a_{1} + a_{2} + a_{3} + a_{4} + \cdots \]
+
+\par This is how we represent series as partial sums.
+\[ \textrm{let} ~ \{ S_{n}\} ~\textrm{be a sequence of partial sums}\]
+\[ \textrm{let} ~ \{ s_{n}\} ~\textrm{be a function denoting the partial sum of $ n $}\]
+\[ \{S_{n}\} = S_{1}, S_{2}, S_{3}, S_{4}, \cdots \]
+\[ \{S_{n}\} = \sum_{n=1}^{1} s_{n},~ \sum_{n=1}^{2} s_{n},~
+  \sum_{n=1}^{3} s_{n},~ \sum_{n=1}^{4} s_{n}, ~\cdots, ~ \sum_{n=1}^{n} s_{n}\]
+
+\par Whenever we are trying to determine \textbf{series convergence and divergence},
+we have to be able to contextualize or infinite series as the convergence
+point of a \textbf{sequence of partial sums}. The convergence point of the
+infinite series, therefore must be the convergence point of the
+sequence of partial sums. This, of course, does present us with many
+different things to consider whenever we are evaluating for partial sums. We have
+seen how we can evaluate a series whenever it is just given to us in the form
+
+\[ a_{1} + a_{2} + a_{3} + a_{4} + \cdots \]
+
+We basically think of these terms as the sequence $ a_{n} $, then we just
+create separate sequence $ S_{n} $ that represents the partial sums of
+the terms of the sequence $ a_{n}$. Then, we have to represent this
+sequence $ S_{n} $ as some function or algorithm. After we have
+derived an algorithm for the sequence of partial sums $ S_{n} $, we can
+determine the convergence of the sequence of partial sums $ S_{n} $ by
+evaluating
+\[ \lim_{n \rightarrrow \infty} S_{n} \]
+By finding the point of convergence for the sequence of partial sums,
+we have determined both whether or not the series converges, but
+also where the series converges to. By evaluating a series, we have
+found its \textbf{sum}.
+
+\subsection{What's on the Menu}
+Now that we have learned the basic idea of what series are, we need
+to understand that not all series are this nice. Unfortuantely,
+series, much like sequences, can become much more complicated and complex
+in their terms, and for this reason, we also need to learn some new
+techniques, methodologies, and patterns for which to evaluate
+these series (that is, whenever we are evaluating for a series, we are
+really just determining their point of convergence / limit).
+
+\section{Commonly Seen Series}
+\subsection{Geometric Series
+}
+\fbox{
+  \parbox{\textwidth}{
+    \begin{definition}[\textbf{10.2 (1)}]
+      Geometric Series
+    \end{definition}
+    Geometric series are series of the following form
+    \[ a + ar + ar^{2} + \cdots + ar^{n-1} + \cdots \]
+    \[ \Rightarrow \sum_{n=1}^{\infty} ar^{n-1} \]
+    in which $ a $ and $ r $ are fixed real numbers and
+    $ a \neq 0 $. The series can also be written as
+    \[ \sum_{n=0}^{\infty}ar^{n} \]
+    \textbf{Notation}
+    \\
+    The variable $ r $ is known as the \textbf{ratio} of the
+    geometric series and $ a $ is known as the initial term.
+    \begin{itemize}
+      \item Of course, the reason why we call $ a $ the
+            initial term of the geometric sequence is because
+            whenever n is equal to the initial index of the series,
+            1
+            \[ar^{n-1} \Rightarrow ar^{1-1} \Rightarrow a \]
+    \end{itemize}
+    $ r $ can be either a positive or negative number, as observed in the
+    two following series.
+    \[ \textrm{let} \sum a_{n}, ~ \texrm{let} \sum b_{n}\]
+    \[ \sum a_{n} = \sum_{n=1}^{\infty} \frac{1}{2}(1^{n})\]
+    \[ \sum b_{n} = \sum_{n=1}^{\infty} \frac{1}{2}((-1)^{n})\]
+
+  }}
+
+
+\subsection{Geometric Series Convergence and Divergence}
+Recall that whenever we are trying to determine whether or not a series
+converges or diverges, we are trying to contextualize the series as a
+term within a \textbf{sequence of partial sums}.
+\[ \textrm{let} ~ \{S_{n}\} ~ \textrm{be a sequence of partial sums}\]
+\[ \textrm{let} ~ s_{n} ~ \textrm{be a function denoting the partial sum at some index $ n $}\]
+\[ \{S_{n}\} = s_{1} , s_{2} , s_{3} , s_{4} , \cdots , s_{n}\]
+\[ \{S_{n}\} = \sum_{n=1}^{1}s_{n} , \sum_{n=1}^{2} s_{n} ,
+  \sum_{n=1}^{3} s_{n}, \sum_{n=1}^{4}s_{n}, \cdots, \sum_{n=1}^{n} s_{n}    \]
+
+From this, we know that the limit of the sequence of partial sums $ \sum_{n=1}^{\infty}s_{n}$ is
+equal to the sum of a series.
+
+\par In the most general case of a geometric series, recall that
+we obtain the following form:
+\[ \textrm{let $\sum S_{n}$ be some geometric series (that is, some fucntion)}\]
+\[ \textrm{let the function of $ \sum S_{n}$ be } ar^{n-1} \]
+\[ \sum S_{n} = S_{1} + S_{2} + S_{3} + S_{4} + \cdots + S_{n}  \textrm{ \textbf{Write the $ n$th partial sum}}\]
+\[ \Rightarrow \sum S_{n} = ar^{1-1} + ar^{2-1} + ar^{3-1} + ar^{4-1} + \cdots a^{n-1} \]
+\[ \Rightarrow \sum S_{n} = ar^{0} + ar^{1} + ar^{2} + ar^{3} + \cdots a^{n-1} \]
+\[ \Rightarrow \sum S_{n} = a + ar + ar^{2} + ar^{3} + \cdots a^{n-1} \]
+\[ \Rightarrow
+  r\sum S_{n} = r(ar^{1-1} + ar^{2-1} + ar^{3-1} + ar^{4-1} + \cdots ar^{n-1}) \textrm{ \textbf{Multiply both sides by $ r $} }\]
+\[ \Rightarrow
+  S_{n} - r\sum S_{n} = (a + ar + ar^{2} + ar^{3} + \cdots + ar^{n-1} ) - (ar + ar^{2} + ar^{3} + ar^{4} + \cdots + ar^{n})
+\]
+Here, we now subtracting $ r\sum S_{n}$ from $ S_{n} $. We just introduce $ S_{n} $.
+
+\[ S_{n} - r\sum S_{n} = a - ar^{n}\]
+Notice all terms except for the initial term $ a $ and the
+terminating term $ a ^{n} $ are left. Let's factor both sides now.
+
+\[ S_{n} (1 - r) = a (1 - r^{n}) \]
+
+\[ S_{n} = \frac{a(1-r^{n})}{(1-r)} \textrm{for all $ r $ where $ r \neq 1 $} \]
+
+Now that we have a general function to solve for the sum of the geometric series $ \sum S_{n} $,
+let us try to determine what values of $ r $ that the geometric sequences converges and
+diverges.
+
+\[ \textrm{let $ \sum S_{n} $ be geomtric series} \]
+\[ S_{n} = ar^{n+1}\]
+\[ \Rightarrow S_{n} = S_{1} + S_{2} + S_{3} + \cdots + S_{n} \]
+\[ \Rightarrow S_{n} = ar^{1-1} + ar^{2-1} + ar^{3-1} + \cdots + ar^{n-1} \]
+\[ \Rightarrow S_{n} = a + ar + ar^{2} + \cdots + ar^{n-1} \]
+\[ \Rightarrow r(S_{n}) = r(a + ar + ar^{2} + \cdots + ar^{n-1}) \]
+\[ \Rightarrow r(S_{n}) = ar + ar^{2} + ar^{3} + \cdots + ar^{n} \]
+\[ \Rightarrow S_{n} - r(S_{n}) = S_{n} - (ar + ar^{2} + ar^{3} + \cdots + ar^{n}) \]
+\[ \Rightarrow (a + ar + ar^{2} + ar^{3} + \cdots + ar^{n-1}) - (ar + ar^{2} + ar^{3} + \cdots + ar^{n-1} + ar^{n}) \]
+\[ \Rightarrow S_{n} - r(S_{n}) = a - ar^{n} \]
+\[ \Rightarrow S_{n} (1 - r) = a(1 - r^{n}) \]
+\[ \Rightarrow S_{n} = \frac{a(1-r^{n})}{(1-r)} \textrm{ for all $ r \neq 1 $ }\]
+
+This formula $ S_{n} = \frac{a(1-r^{n})}{(1-r)} $ represents the sum or value of any geometric series. However,
+how can we use this formula to determine the convergence and divergence of a geometric series?
+
+\subsection{Convergence and Divergence of the Geometric Series}
+      Let us observe the behavior of the sum of a geometric series.
+      \\
+      \\
+      \textbf{Recall.}
+      \\
+
+      The sum of a geometric series is equal to the following equation:
+      \[ \sum S_{n} = \frac{a(1-r^{n})}{(1-r)}\]
+      \textbf{Definition.}
+      \[ \textrm{let $ \sum S_{n} $ be a geometric series} \]
+      \[ S_{n} = \sum_{n=1}^{\infty} ar^{n-1} \]
+      In order to determine the convergence of a geometric series,
+      we must determine the limit of the sum  of the geometric series.
+      \[ \lim_{n \rightarrow \infty}  S_{n} = \lim_{n \rightarrow \infty} \frac{a(1-r^{n})}{(1-r)} \]
+
+      Let us look at the dominate term of the function, $ r_{n} $. Observe
+      that when the absolute value of r is greater than one  $ | r| > 1$, the term $ r^{n} $
+      will approach infinity. However, whenever the absolute value of r is
+      less than 1 $ | r| < 1$, $r^{n}$ will just approach 0, since all values less than one will
+      only get smaller when exponentiated.
+
+      \\
+      Therefore, we know that for the geometric series $ \sum S_{n} $, its value or sum diverges
+      when the ratio $ r $ is greater than one.
+      \[ S_{n} = \lim_{n \rightarrow \infty} \frac{a(1-r^{n})}{(1-r)} = \infty \textrm{ when $ | r| > 1 $ }\]
+
+      On the other hand, whenever the value of the ratio $ r $ is less than one or $ | r| < 1 $, we know
+      that the ratio itself is only going to get smaller and smaller, eventually approaching 0, meaning
+      that the value of the infinite series will converge.
+
+      \[ S_{n} = \lim_{n \rightarrow \infty} \frac{a(1-r^{n})}{(1-r)} \textrm{ for $ |r| < 1$  }\]
+      \[ \Rightarrow S_{n} = \lim_{n \rightarrow \infty} \frac{a(1-0)}{(1-r)} = \frac{a}{(1-r)}\]
+
+
+
+\subsection{Geometric Series Examples}
+%10.2 (Part Two): Infinite Series (Part Two) (04/07/23)
+\chapter{10.2 (Part Two): Infinite Series (Part Two) (04/07/23)}
 \section{Reminders}
+\begin{itemize}
+  \item The \textbf{fifth MyLab Math assignment: Infinite Series}, will be due on
+        \textbf{Sunday, April 9th, 2023}.
+
+  \item The second written assignment is due on {Monday, April 10th, 2023}.
+\end{itemize}
+\section{Summary}
+In this lecture, we essentially expanded on what we learned about series in the previous
+lecture.
+Recall how we learned about geometric series, their formation, as well as how we
+determine whether or not they converge or diverge. Most importantly, we also
+learned how to manipulate the values of a series in order to determine
+an equation for finding the sum of a geometric series.
+\par All of this culminates into today's lesson, which is all about
+determinign the convergence of other types of series.
+\section{Recall}
+Over our introduction and talks about series, we have gone over
+different methods and algorithms for determining the value of a
+sequence as well as determining convergence and divergence.
+\subsection{Convergence and Divergence in Series}
+Remember, convergence and divergence in regards to series refers
+to the sum of the series as the terms of the series approach infinity.
+This can be represented through the following notation:
+\[ \sum_{n=1}^{\infty}S_{n} = a_{1} + a_{2} + a_{3} + a_{4} + \cdots + a_{n} \]
+Given this general form of a how a series works, we can actually
+recontextualize the terms of the series as a sequence
+\[ \{a_{n}\} = a_{1}, a_{2} , a_{3}, a_{4}, \dots, a_{n} \]
+This is important because we can actually create a new separate sequence
+$ \{ S_{n}\}$, where each term is a series up until that term
+in the sequence
+\[ \{S_{n}\} = S_{1}, S_{2}, S_{3}, S_{4}, \dots, S_{n}\]
+\[ \{S_{n}\} = (a_{1}), (a_{1} + a_{2}), (a_{1} + a_{2} + a_{3}), \dots, (a_{1} + a_{2} + a_{3} + \cdots + a_{n} ) \]
+This final term $ S_{n} = (a_{1} + a_{2} + a_{3} + \cdots + a_{n} ) $ is equivalent
+to the series $ \sum S_{n} $. The value of a series is equivalent to the
+$n$th term of a sequence of partial sums. In order to evaluate the value and the
+series convergence, then, is to just determine the convergence of the sequence
+of partial sums. The point at which the sequence of partial sums converges to
+is equivalent to the sum of the series.
+\\
+\\
+Now, this pattern of course works for trivial and elementary series,
+since all it requires is the ability to find the pattern
+between the terms in the sequence of partial sums. We can just
+apply sequence convergence methods and tricks in order to compute
+this. But, what happens when we want to determine if a more
+complex sequence converges or diverges? What if, for example, we
+had a geometric sequence?
+\par A geometric sequence is a sequence that occurs in the following form
+
+\[ \sum_{n=1}^{\infty} a \cdot r^{n-1} = a + ar + ar^{2} + ar^{3} + \cdots + ar^{n-1}\]
+
+A geometric series, thankfully, has a general equation that allows us to compute its
+sum and value.
+
+\[ \textrm{let $S_{n}$ be the value of a geometric sequence} \]
+\[ S_{n} = \frac{a(1-r^{n})}{(1-r)} \]
+Using this equation, we can deduce that all values of the ratio $ r $ that are greater
+than 1, or $ |r| > 1 $ are going to \textbf{diverge}, while all values of the ratio
+$ r $ that are less or equal to 1, or $ |r| \leq 1$ are going to \textbf{converge} at
+the following value:
+
+\[ \lim_{n \rightarrow \infty} \frac{a(1-r^{n})}{(1-r)} = \frac{a}{(1-r)} \textrm{ when $|r| \leq 1 $} \]
+
+Otherwise, all other geometric sequences will \textbf{diverge.}
+
+
 \section{Motivation}
-\chapter{10.4: Comparision Tests (04/10/23)}
+Given now that we know how a general algorithm for computing the value and convergence/divergence
+of a series as well as how to find series convergence and divergence given a particular type
+of series, let us learn some new techniques in order to compute the value of a series
+as well as series convergence and series divergence.
+
+\section{Partial Fraction Decomposition for Series}
+TODO
+
+\section{Telescoping Series}
+TODO
+
+\section{nth-term Divergence Test}
+How can we actually determine when a series converges
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Theorem 7
+      \end{thm}
+      \[ \textrm{If } \sum_{n=1}^{\infty} a_{n} \textrm{ converges, then $ a_{n} $ approaches 0.}\]
+      \textbox{Warning.}
+      \\
+      We cannot say the same for the \textbf{converse} of this. Just because i
+    }}
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        The nth-term divergence test
+      \end{thm}
+      The series
+      \[ \sum_{n=1}^{\infty} a_{n} \]
+      diverges if the limit of the function of the series function $ a_{n}$ fails to exist or is not equal to 0.
+        \[ \sum_{n=1}^{\infty} \textrm{ converges when } \lim_{n \rightarrow \infty} a_{n} \neq 0 \textrm{ or does not exist. }\]
+      }
+    }
+\end{center}
+
+
+\section{Combining Series}
+Now that we have learned some general ideas about series, let us talk about
+some operations we can do with series.
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}[8]
+        Combining Series Theorem (Theorem 8)
+      \end{thm}
+      \[ \textrm{Let $ \sum a_{n} = A $ and $ \sum b_{n} = B $ be convergent series}\]
+
+      \begin{itemize}
+        \item Sum Rule:
+              \[ \sum (a_{n} + b_{n})  = \sum a_{n} + \sum b_{n} = A + B \]
+
+        \item Difference Rule:
+              \[ \sum (a_{n} - b_{n}) = \sum a_{n} - \sum b_{n} = A - B \]
+
+        \item Constant Multiple Rule:
+              \[ \sum k a_{n} = k \sum a_{n} = kA \textrm{ for all values of $ k $ } \]
+
+      \end{itemize}
+
+    }
+  }
+
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \textbf{Proof.} Series Sum Rule
+      \[ \textrm{let $ \sum a_{n} = A $ and $ \sum b_{n} = B $}\]
+      \[ A = a_{1} + a_{2} + a_{3} + a_{4} + \cdots + a_{n}  \]
+      \[ B = b_{1} + b_{2} + b_{3} + b_{4} + \cdots + b_{n}\]
+      \[ \textrm{ let $ S_{n} $ be equal to $ \sum (a_{n} + b_{n})$}\]
+      \[ S_{n} = (a_{1} + a_{2} + a_{3} + \cdots + a_{n}) + (b_{1} + b_{2} + b_{3} + \cdots + b_{n})\]
+      \[ \Rightarrow S_{n}= (a_{1} + b_{1}) + (a_{2} + b_{2}) + (a_{3} + b_{3}) + (a_{4} + b_{4}) + \cdots
+        (a_{n} + b_{n}) \]
+      \[ \Rightarrow S_{n} = A_{n} + B_{n}\]
+
+    }
+  }
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \textbf{Proof.} Series Difference Rule
+      \[ \textrm{let $ \sum a_{n} = A $ and $ \sum b_{n} = B $}\]
+      \[ A = a_{1} + a_{2} + a_{3} + a_{4} + \cdots + a_{n} \]
+      \[ B = b_{1} + b_{2} + b_{3} + b_{4} + \cdots + b_{n} \]
+      \[ \textrm{ let $ S_{n}$ be equal to $ \sum (a_{n} - b_{n})$} \]
+      \[ S_{n} = \sum a_{n} - \sum b_{n}  \]
+      \[ S_{n} = (a_{1} + a_{2} + a_{3} + \cdots + a_{n}) -  (b_{1} + b_{2} + b_{3} + \cdots + b_{n})\]
+      \[ S_{n} = (a_{1} - b_{1}) + (a_{2} - b_{2}) + (a_{3} - b_{3}) + \cdots + (a_{n}- b_{n})\]
+      \[ S_{n} = A - B \]
+    }
+  }
+\end{center}
+
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \textbf{Proof.} Series Constant Multiple Rule
+      \[ \textrm{let $ \sum a_{n} = A $ and $ k $ be some constant }\]
+      \[ \sum a_{n} = A = a_{1} + a_{2} + a_{3} + \cdots + a_{n} \]
+      \[ \textrm{ let $ S_{n} $ be equal to $ \sum (k \cdot a_{n}) $}\]
+      \[ S_{n} = k \cdot a_{1} + k \cdot a_{2} + k \cdot a_{3} + \cdots + k \cdot a_{n} \]
+      \[ S_{n} = k (a_{1} + a_{2} + a_{3} + \cdots + a_{n})\]
+      \[ S_{n} = k \cdot A = k \sum a_{n} \]
+    }
+  }
+\end{center}
+
+
+% 10.3: The Integral Test (04/05/23)
+\chapter{10.3: The Integral Test (04/05/23)}
 \section{Reminders}
+\begin{itemize}
+  \item The fifth \textbf{MyLab Math: Infinite Series} is due on
+        \textbf{Sunday, April 9th, 2023}.
+  \item The second \textbf{Written Homework: Infinite Series} is due on
+        \textbf{Monday, April 10th, 2023}.
+\end{itemize}
+
 \section{Motivation}
+In the previous section, we expanded our knowledge and understanding
+of infinite series convergence and divergence by observing some
+other types of infinite series as well as how to approach them.
+\begin{itemize}
+  \item Namely, we learned about the \textbf{nth term divergence test},
+        \textbf{combining series}, as well as other types of series
+        manipulation, such as \textbf{telescoping series} and
+        \textbf{partial fraction decomposition}.
+
+\end{itemize}
+
+\subsection{Recap: nth term divergence test}
+TODO
+\subsection{Recap: Combining Series}
+TODO
+\subsection{Recap: Telescoping Series}
+TODO
+\subsection{Recap: Partial Fraction Decomposition}
+TODO
+
+\section{Integral Test}
+
+% 10.4: Comparision Tests (04/07/23)
+\chapter{10.4: Comparision Tests (04/07/23)}
+\section{Reminders}
+
+\begin{itemize}
+  \item The fifth \textbf{MyLab Math: Infinite Series} is due on
+        \textbf{Sunday, April 9th, 2023}.
+  \item The second \textbf{Written Homework: Infinite Series} is due on
+        \textbf{Monday, April 10th, 2023}.
+\end{itemize}
+
+\section{Motivation}
+In the previous lesson, we discussed a technique known as the
+\textbf{integral test for series convergence.} Essentially,
+we use this technique to determine whether or not a given series
+converges or diverges by comparing it to its integral. After all,
+whenever we do have a series, we can always think about it like
+a \textbf{Riemann Sum}, or at least, some botched version of a
+Riemann Sum. The function created by the series, however, can
+also be graphed as a function. What we end up doing is just
+graphing both the series as a series as well as the series as a
+function and then compare their behavior. If we can determine
+that the integral of the series as a function is finite,
+then we can reasonably say that the limit of the series must
+also be finite, and therefore must converge.
+
+\section{The Comparison Test}
+TODO
+% 10.5: Absolute Convergence and the Ratio Test
 \chapter{10.5: Absolute Convergence and the Ratio Test}
 \section{Reminders}
+\begin{itemize}
+  \item There are practice pracice problems on \textbf{MyLab Math} that have unalimited attempts and no due date.
+  \item There is a written homework that is due at the beginning of class on \textbf{Friday, April 14, 2023}.
+        \item Midterm 1 for \textbf{MATH\_226} is on \textbf{Tuesday, April 18, 2023}
+
+\end{itemize}
+
+
 \section{Motivation}
+In the previou sclasses we have learned about when a series converges as well as how to test for that.
+However, in order to supplmeent our learning we need to learn about how to build functions from series
+
+\[ 1 + x + x^{2} + \cdots \Rightarrow \frac{1}{1-x}, \textrm{ $ |x | \leq 1 $ } \]
+
+\section{Direct Comparison Test}
+\section{Limit Comparison Test}
+\section{Absolute Convergence Test and Ratio Test}
+\subsection{Underlying Intuition...}
+Recall that whenever we started to learn about the geometric series,
+we obsessed over the following notation
+
+\[ \sum_{n=1}^{\infty} a \cdot r^{n} \]
+
+We talked about the idea of the varialbe $ r $ as a ratio that was \textbf{very related}
+to the series' convergence and divergence behavior.
+\begin{itemize}
+  \item More specifically, as long as the ratio $ | r | \leq 1 $, then the value $ r^{n} $ would
+        eventually converge to 0, which meant that the function $ \frac{a(1-r^{n})}{1-r} $ would
+        converge.
+  \item The contrapositive to this, that $ | r | \geq 1 $ meant that the value $ r^{n} $ would
+        \textbf{diverge}.
+\end{itemize}
+
+This same idea applies here. If we were given a geometric series, for example, and we
+wanted to isolate this ratio $ r $, there are a number of ways to do so.
+
+We are able to isolate the variable $ r $ be analyzing \textbf{successive terms} with
+the following function:
+\[ \textrm{let $ \sum a_{n}$ be a series} \]
+\[ \Rightarrow \frac{ar^{n+1}}{ar^{n}}\]
+
+\subsection{Absolute Convergence Test}
+\subsection{Ratio Test}
+Essentially, we want ot be able to analyze the ratio $ r $ in a
+series of the form
+\[ \sum_{n=1}^{\inty} ar^{n} \]
+
+We want to analyze the $ r $, since we can recall that as long as $ |r| < 1 $, then
+the series will converge.
+
+% 10.6: Alternating Series and Conditional Convergence
 \chapter{10.6: Alternating Series and Conditional Convergence}
 \section{Reminders}
 \section{Motivation}
+% 10.6: Strategies for Analyzing Convergence
 \chapter{10.6: Strategies for Analyzing Convergence}
 \section{Reminders}
 \section{Motivation}
+
 %%%%%%%%%%%% MIDTERM 1 DONE %%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{10.7 (Part One): Power Series}
 \section{Reminders}
