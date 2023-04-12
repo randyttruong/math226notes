@@ -6,6 +6,7 @@
 % Definitions / Theorems
 %%%%%%%%%%%%%%%%%%%%%%
 \newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{thm}{Theorem}
 %%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,7 +27,7 @@
 \newcommand{\N}{\mathbb{N}}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\title{Math\_226 Notes}
+\title{Math\_226 (Spring 2023) Notes}
 \author{Randy Truong}
 \begin{document}
 \maketitle
@@ -293,15 +294,11 @@ and divergence in more complex sequence functions.
       Suppose that $ f(x)$ is a function defined for all $ x \geq n_{0}$ and that $ \{a_{n}\}$ is a sequence of real numbers
       $ \R $ such that $ a_{n} = f(n)$ for $ n \geq n_{0}$. Then,
       \[ \lim_{n \rightarrow \infty } a_{n} = L ~\textrm{wherever}~ \lim_{n \rightarrow \infty}f(x) = L \]
-
-      \\
       \textbf{Warning.}
       We cannot say the same about the converse of this theorem. That is, we  cannot say that as long as a sequence approaches
       infinity, that a function $ f $ with a domain of the terms of the sequence $ a_{n} $ will converge at a a limit $ L$.
       For example, imagine that if we had some high-degree polynomial expression and we had a sequence that converged at 0. The function itself might have several roots, as it will intersect the x-axis numerous times at zero. Ultimately however,
       the polynomial might not approach 0, but value of the function at the terms $ a_{n}$ might suggest it does.
-
-
     }
   }
 \end{center}
@@ -406,7 +403,7 @@ index $ n $. We don't need information about other terms in the sequence, as we 
 term of the sequence \textit{solely} based on its position.
 \subsection{Examples of Explicit Sequences}
 \[ a_{n} = n + 1, ~ a_{n} = \frac{n}{2} \]
-\subsectoin{Recursive Sequences}
+\subsection{Recursive Sequences}
 A \textbf{recursive sequence} is a sequence in which the value of a term in the sequence is computed using the previous
 term of the sequence. It might be helpful to think of this as recursion in computer science, as we are literally just taking
 a previous output as input in this function. Generally, whenever we denote a recursive function, we will say that the
@@ -782,7 +779,8 @@ sequence $ S_{n} $ as some function or algorithm. After we have
 derived an algorithm for the sequence of partial sums $ S_{n} $, we can
 determine the convergence of the sequence of partial sums $ S_{n} $ by
 evaluating
-\[ \lim_{n \rightarrrow \infty} S_{n} \]
+\[ \lim_{n \rightarrow \infty} S_{n}\]
+
 By finding the point of convergence for the sequence of partial sums,
 we have determined both whether or not the series converges, but
 also where the series converges to. By evaluating a series, we have
@@ -824,7 +822,7 @@ really just determining their point of convergence / limit).
     \end{itemize}
     $ r $ can be either a positive or negative number, as observed in the
     two following series.
-    \[ \textrm{let} \sum a_{n}, ~ \texrm{let} \sum b_{n}\]
+    \[ \textrm{let} \sum a_{n}, ~ \textrm{let} \sum b_{n}\]
     \[ \sum a_{n} = \sum_{n=1}^{\infty} \frac{1}{2}(1^{n})\]
     \[ \sum b_{n} = \sum_{n=1}^{\infty} \frac{1}{2}((-1)^{n})\]
 
@@ -909,10 +907,9 @@ how can we use this formula to determine the convergence and divergence of a geo
       less than 1 $ | r| < 1$, $r^{n}$ will just approach 0, since all values less than one will
       only get smaller when exponentiated.
 
-      \\
       Therefore, we know that for the geometric series $ \sum S_{n} $, its value or sum diverges
       when the ratio $ r $ is greater than one.
-      \[ S_{n} = \lim_{n \rightarrow \infty} \frac{a(1-r^{n})}{(1-r)} = \infty \textrm{ when $ | r| > 1 $ }\]
+      \[ S_{n} = \lim_{n \rightarrow \infty} \frac{a(1-r^{n})}{(1-r)} = \infty \textrm{ when $ | r| > 1 $ } \]
 
       On the other hand, whenever the value of the ratio $ r $ is less than one or $ | r| < 1 $, we know
       that the ratio itself is only going to get smaller and smaller, eventually approaching 0, meaning
@@ -1014,7 +1011,7 @@ How can we actually determine when a series converges
         Theorem 7
       \end{thm}
       \[ \textrm{If } \sum_{n=1}^{\infty} a_{n} \textrm{ converges, then $ a_{n} $ approaches 0.}\]
-      \textbox{Warning.}
+      \textbf{Warning.}
       \\
       We cannot say the same for the \textbf{converse} of this. Just because i
     }}
@@ -1173,16 +1170,94 @@ then we can reasonably say that the limit of the series must
 also be finite, and therefore must converge.
 
 \section{The Comparison Test}
+\subsection{Intuition}
+Whether or not a sequence converges or diverges
+depends on its \textbf{tail}, or the movement
+of the sequence as the index $ n $ approaches infinity,
+which is also deonted as $ n \rightarrow \infty $.
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        The Comparison Test
+      \end{definition}
+      \[ \sum_{n=1}^{\infty} a_{n} \textrm{ converges if
+          and only if } \sum_{n=k}^{\infty} a_{k}
+        \textrm{ converges, where $ k $ is some value
+          after $ n $} \]
+      We can think of the difference between these
+      two sums as
+      \[ \sum_{n=1}^{\infty} a_{n} - \sum_{n=k}^{\infty} a_{n}
+        = \sum_{n=1}^{k} a_{n} \]
+      since we can think of the resulting sum
+      as the series terms $ a_{n} $ between $ n $ and $ k $,
+      or $ 1 < n < k $.
+      \par From this, we know that if
+      \[ 0 \leq a_{n} \leq b_{n} ~ \forall n, \textrm{ then }\]
+      \begin{enumerate}
+        \item If $ \sum b_{n} $ converges, then
+              this implies $ \sum a_{n} $ also converges
+        \item If $ \sum a_{n} $ diverges, then
+              this implies that $ \sum b_{n} $
+              also diverges
+              (to $ \infty$)
+      \end{enumerate}
+    }
+  }
+\end{center}
+
+\subsection{Comparison Test Proof}
+\begin{remark*}
+Assume that $ \sum a_{n} $ diverges to $ + \infty$.
+Show that $ \sum b_{n} $ also diverges to $ + \infty$.
+\end{remark*}
+
+\[ 0 \leq a_{n} \leq b_{n} \]
+
+\[\textrm{let $A_{n} = \sum_{k=1}^{n} a_{k}$ and
+    $B_n = \sum_{k=1}^{n}b_{k}$. }\]
+
+We must demonstrate that $\forall M, \exists N $, such that
+$ B_{n} > M $, $\forall n > N $. (We must demonstrate
+that for all M, there exists such a value N that
+$ B_{n} > M $ for all values of $ n > N $, where
+M is some lower bound of $ B_{n} $ and $ n$ and $ N$ are indices
+of the series).
+\section{P-Series Test}
 TODO
+\section{Limit Comparison Test}
+TODO
+
+
+
+
+
+
+
+
+
 % 10.5: Absolute Convergence and the Ratio Test
 \chapter{10.5: Absolute Convergence and the Ratio Test}
-\section{Reminders}
+\section{Reminders (MATH\_226)}
 \begin{itemize}
   \item There are practice pracice problems on \textbf{MyLab Math} that have unalimited attempts and no due date.
+  \item \textbf{MyLab Math 6: Integral Test} and
+        \textbf{MyLab Math 7: Comparison Tests} are due on
+        \textbf{Tuesday, April 11, 2023} and \textbf{Thursday,
+        April 13, 2023}, respectively.
   \item There is a written homework that is due at the beginning of class on \textbf{Friday, April 14, 2023}.
-        \item Midterm 1 for \textbf{MATH\_226} is on \textbf{Tuesday, April 18, 2023}
-
+        \item \textbf{MATH\_226 Midterm 1} is on \textbf{Tuesday, April 18, 2023}
 \end{itemize}
+
+\section{Reminders (MATH\_230-1)}
+\begin{itemize}
+  \item \textbf{MyLab Math 6: Planes in Space} is due on
+        \textbf{Thursday, April 13, 2023}.
+  \item \textbf{Written Homework 1} is due on
+        \textbf{Wednesday, April 12, 2023}.
+\end{itemize}
+
 
 
 \section{Motivation}
@@ -1191,9 +1266,99 @@ However, in order to supplmeent our learning we need to learn about how to build
 
 \[ 1 + x + x^{2} + \cdots \Rightarrow \frac{1}{1-x}, \textrm{ $ |x | \leq 1 $ } \]
 
-\section{Direct Comparison Test}
+\section{Direct Comparison Test (Part 2)}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Direct Comparison Test
+      \end{definition}
+      TODO
+    }
+  }
+\end{center}
+
 \section{Limit Comparison Test}
-\section{Absolute Convergence Test and Ratio Test}
+\subsection{Intuition}
+Recall the \textbf{Constant Multiple Rule for Sequences}, which essentially
+stated that if there were two sequences $ \{a_{n}\} $ and
+$ \{ ca_{n}\}$, where $ c $ is just a constant, then we
+know that, although $ \{ ca_{n}\} \neq \{ a_{n}\} $, both
+sequences would just have the same behavior, since they'd
+basically just be the same sequences, just with different
+scales.
+
+\par We can, of course, just apply this to series, since
+the series
+\[ \sum_{n=1}^{\infty} c \cdot a_{n} = c \sum_{n=1}^{\infty} a_{n}\]
+\[ \Rightarrow \sum a_{n} \textrm{'s behavior} \Rightarrow c \sum a_{n}
+\textrm{'s behavior}\]
+
+The idea here is that, what if we just thought of
+two sequences or series as scaled versions of the other. What if we
+could determine that scale? What would the scale imply?
+
+Introduce the \textbf{Limit Comparison Test}.
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Limit Comparison Test
+      \end{definition}
+
+      Suppose $ a_{n} > 0 $ and $ b_{n} > 0 $ for all $ n > N $.
+      \\
+      \\
+
+
+      \[ \lim_{n \rightarrow \infty} \frac{a_{n}}{b_{n}} =
+        \begin{cases}
+          C > 0, ~ \textrm{then $ \sum a_{n} $'s behavior $ \Leftrightarrow $
+          $ \sum b_{n} $'s behavior } \\
+          0, ~ \textrm{then $ \sum b_{n} $'s conv. $ \Rightarrow $ implies $ \sum a_{n}$'s conv.}  \\
+          \infty, ~ \textrm{then $ \sum a_{n} $'s conv.
+          $ \Rightarrow$ implies $ \sum b_{n} $'s conv. }
+        \end{cases}\]
+
+      The contrapositive is also true,
+            \[
+        \lim_{n \rightarrow \infty} \frac{a_{n}}{b_{n}} =
+        \begin{cases}
+          C > 0, ~ \textrm{then $ \sum a_{n} $'s behavior $ \Leftrightarrow $
+          $ \sum b_{n} $'s behavior } \\
+          0, ~ \textrm{then $ \sum a_{n} $'s div. $ \Rightarrow $ implies $ \sum b_{n}$'s div.}  \\
+          \infty, ~ \textrm{then $ \sum b_{n} $'s div.
+          $ \Rightarrow$ implies $ \sum a_{n} $'s div. }
+        \end{cases}
+      \]
+    }}
+\end{center}
+
+      \subsection{Intuition (Part 2.)}
+      The main idea here is that, we want to analyze the ratio
+      of $ a_{n} $ and $ b_{n}$  to determine which function is
+      \textbf{greater than the other}. If some function is less than or
+      equal to another function, and the greater function converges,
+      then the lesser function must also converge logically. Vice
+      versa, if the lesser function diverges, then the greater
+      function must also diverge logically.
+
+
+\section{Absolute Convergence Test}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Absolute Convergence
+      \end{definition}
+
+    }
+  }
+\end{center}
+
+
+\section{The Ratio Test and the Root Test}
 \subsection{Underlying Intuition...}
 Recall that whenever we started to learn about the geometric series,
 we obsessed over the following notation
@@ -1215,22 +1380,276 @@ wanted to isolate this ratio $ r $, there are a number of ways to do so.
 
 We are able to isolate the variable $ r $ be analyzing \textbf{successive terms} with
 the following function:
-\[ \textrm{let $ \sum a_{n}$ be a series} \]
-\[ \Rightarrow \frac{ar^{n+1}}{ar^{n}}\]
+\[ \textrm{let $ \sum a_{n}$ be a geometric series} \]
+\[ \Rightarrow \frac{ar^{n+1}}{ar^{n}} = r \]
 
-\subsection{Absolute Convergence Test}
+as well as by isolating the variable $ r $ by analyzing the \textbf{nth root} of any
+term in the series:
+\[ \textrm{let $ \sum a_{n}$ be a geometric series}\]
+\[ \Rightarrow \sqrt[n]{ar^{n}} = r \]
+
+To take this a step further, let us take this discussion
+about the variable $ r $ outside the realm of purely
+geometric series. We are able to actually apply these ratios
+to non-specifically geometric functions, such as functions
+with fractions as well as factorials. The idea is that it does
+not matter whether or not there is some consistent ratio between
+all terms, but rather, that there is some ratio that we approach
+\textbf{at a limit}.
+
+From this, we can observe the following equations
+
+
 \subsection{Ratio Test}
 Essentially, we want ot be able to analyze the ratio $ r $ in a
 series of the form
-\[ \sum_{n=1}^{\inty} ar^{n} \]
+\[ \sum_{n=1}^{\infty} ar^{n} \]
 
 We want to analyze the $ r $, since we can recall that as long as $ |r| < 1 $, then
 the series will converge.
 
 % 10.6: Alternating Series and Conditional Convergence
-\chapter{10.6: Alternating Series and Conditional Convergence}
+\chapter{10.6: Alternating Series and Conditional Convergence (04/12/23)}
+
 \section{Reminders}
+\begin{itemize}
+  \item \textbf{MyLab 7: Comparison Tests} is due
+        \textbf{tomorrow, Thursday, April 13, 2023}.
+  \item \textbf{Written Assignment 3: Comparison Tests}
+        is due on \textbf{Friday, April 14, 2023}.
+\end{itemize}
+
+\section{Objectives}
+TODO
+\section{Recall}
+TODO
+
 \section{Motivation}
+But what if we see a series that comes in this form:
+\[ 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots +
+  \frac{(-1)^{n+1}}{n} + \cdots \]
+or this?
+\[ -2 + 1 - \frac{1}{2} + \frac{1}{4} - \frac{1}{8} +
+\cdots + \frac{(-1)^{n}4}{2^{n}} + \cdots\]
+
+As we will see, these are known as
+\textbf{Alternating Series}, and are particularly notable
+series because they have a particular methdology of
+assessing convergence and divergence.
+\section{Alternating Series Test}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Alternating Series Test (Theorem 15)
+      \end{thm}
+
+      The series denoted as
+
+      \[ \sum_{n=1}^{\infty} (-1)^{n+1} u_{n} =
+        u_{1} - u_{2} + u_{3} - u_{4} + \cdots \]
+      converges \textbf{if and only if} the following
+      conditions are satisfied:
+      \begin{enumerate}
+        \item All values of $ u_{n} $ are positive
+        \item All values of $ u_{n} $ are
+              \textbf{eventually nonincreasing}, meaning
+              that $ u_{n} \geq u_{n+1} $ for all $ n \geq N $
+              for some integer $ N $.
+        \item The values $ u_{n} $ eventually approach
+              0.
+      \end{enumerate}
+
+
+    }
+  }
+\end{center}
+
+\subsection{Alternating Series Intuition}
+Whenever we are working with alternating series, it is
+important to think of $ u_{n} $ as the terms, but rather,
+the partial sums of the terms at $ n $.
+We want to emphasize the differences between $ u_{n} $ and $ u_{n+1}$, thinking about  the \textbf{
+  difference between the partial sums}  $ u_{n}$.
+
+\par If we were geometrically observing the
+values of $ u_{n} $, we would imagine that the partial
+sums of the series are narrowing down, almost like a
+funnel. The idea here is that, if were were to
+calculate all partial sums of the series $ u_{n} $,
+we would find that they all approach a single value,
+and therefore, converge. We need the
+values of $ u_{n} $ (the difference between the
+partial sums of $ a_{n} $ and $ a_{n+1} $) to be positive because TODO.
+\par The difference between the partial sums $ u_{n} $ and
+$ u_{n+1} $ also needs to be decreasing, forming
+this ``cone'' shape. If the differences between the
+partial sums is decreasing, then the difference
+will eventually approach 0, then we can state
+that the actual sum of the series will stop at
+some limit $ L $.
+\begin{center}
+  \textbf{TODO: Insert Graphic displaying the difference}
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{corollary}
+        Alternating Harmonic Series Divergence
+      \end{corollary}
+      The alternating harmonic series
+      \[ \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \]
+      is \textbf{conditionally convergent}, since
+      we know that although the alternating harmonic
+      series does diverge by using the
+      \textbf{alternating series test}, we know
+      that the absolute valu eof the alternating
+      harmonic series is equal to the harmonic series,
+      which we know diverges by the integral test.
+      \[ \sum_{n=1}^{\infty}\frac{|(-1)^{n+1}|}{|n|}
+        \Rightarrow \sum_{n=1}^{\infty} \frac{1}{n}
+      \Rightarrow \textbf{ which diverges}\]
+    }
+  }
+\end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Alternating Series Estimation Theorem (by
+        Prof. Zaslow)
+      \end{thm}
+      Whenever a series is convegent
+      by the \textbf{Alternating
+        Series Test}, then we must know that the
+      absolute value of the
+      remainder $ |R_{n}| \leq u_{n+1} $ for all
+      $ n \geq N $, where $ |R_{n}| $ represents
+      the difference between the partial
+      sums $ u_{n} $ of the series.
+      \[ |R_{n} | \leq u_{n+1} \]
+
+    }}
+\end{center}
+
+
+
+
+
+
+\subsection{Alternating Series Proof}
+TODO
+\subsection{Examples}
+
+\begin{remark*}[\textbf{1}]
+  Alternating Harmonic Series
+\end{remark*}
+
+\begin{remark*}[\textbf{2}]
+  Non-Increasing Example
+\end{remark*}
+
+
+\section{Alternating Series Estimation Theorem}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Alternating Series Estimation Theorem (Theorem 16)
+      \end{thm}
+      If the alternating series
+      \[ \sum_{n=1}^{\infty} (-1)^{n+1}u_{n} \] satisfies
+      all three conditions of the \textbf{Alternating Series
+        Test (Theorem 15)}, then for $ n \geq N $,
+      \[ s_{n} = u_{1} - u_{2} + \cdots + (-1)^{n+1} u_{n}\]
+      approximates the sum $ L $ of the series with an
+      error whose absolutye value is less than
+      $ u_{n+1}$, the absolute value of the first unused
+      term. Furthermore, the sum $ L $ lies between
+      any two successive partial sums $ s_{n} $ and
+      $ s_{n+1}$ and the remainder, $ L - s_{n} $ has the
+      same sign as the first unused term.
+    }
+
+  }
+\end{center}
+
+\subsection{Alternating Series Estimation Theorem Intuition}
+TODO
+\subsection{Examples}
+\begin{remark*}[\textbf{3}]
+
+\end{remark*}
+
+\section{Conditional Convergence}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Conditional Convergence
+      \end{definition}
+      A series that is convergent but not
+      \textbf{absolutely convergent} is called
+      \textbf{conditionally convergent}.
+    }
+  }
+\end{center}
+
+\subsection{Conditional Convergence Intuition}
+TODO
+
+\section{Rearranging Series}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Rearrangement Theorem for Absolutely Convergent
+        Series (Theorem 17)
+
+      \end{thm}
+
+      If
+      \[ \sum_{n=1}^{\infty} a_{n} \]
+      converges absolutely, and the sequene
+      \[ b_{1}, b_{2}, b_{3}, \cdots, b_{n}, \cdots \]
+      is any arrangement of the sequence $ \{a_{n}\}$,
+      then $ \sum b_{n} $ converges absolutely and
+      \[ \sum_{n=1}^{\infty} b_{n} = \sum_{n=1}^{\infty} a_{n}\]
+
+
+    }
+  }
+\end{center}
+
+\subsection{Rearranging Series Intuition}
+
+\section{Summary of Tests to Determine Convergence or
+  Divergence}
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{enumerate}
+        \item The nth-Term Test for Divergence
+        \item Geometric Series
+        \item p-series
+        \item Series with nonnegative terms
+        \item Series with some negative terms
+        \item Alternating Series
+
+
+      \end{enumerate}
+
+    }
+  }
+\end{center}
+
+
+
+
 % 10.6: Strategies for Analyzing Convergence
 \chapter{10.6: Strategies for Analyzing Convergence}
 \section{Reminders}
