@@ -1,33 +1,13 @@
 \documentclass{report}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
 
-% Definitions / Theorems
-%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem{definition}{Definition}
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{thm}{Theorem}
-%%%%%%%%%%%%%%%%%%%%%%
-
-% Examples
-%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+\input{macros}
+\input{letterfonts}
 \newtheorem*{remark*}{Example}
 \newtheorem*{definition*}{Meaning}
-%%%%%%%%%%%%%%%%%%%%%%
-
-% Misc
-%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem{plain}{Symbol}
-%%%%%%%%%%%%%%%%%%%%%%
-
-% Real Numbers
-%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Math\_226 (Spring 2023) Notes}
+\date{}
 \author{Randy Truong}
 \begin{document}
 \maketitle
@@ -106,23 +86,20 @@ $ \varepsilon - N $ proof, which is also known as the \textbf{precise
 definition of convergence.}
 \section{Sequences}
 \begin{center}
-  \fbox {
-    \parbox{\textwidth} {
-      \begin{definition}
-        Sequences
-      \end{definition}
-      A function with a domain of natural numbers and a co-domain
+      \dfn
+       {Sequences}
+              {Functions with a domain of natural numbers and a co-domain
       of real numbers.
       \[ f: \N \rightarrow \R \]
-      \begin{definition*}
-      \end{definition*}
       \par Although our intuition would tell us that a sequence
         is just a list or a collection of numbers,
         a sequence is more precisely just a function in which
         we input an \textbf{index} (a natural number) and we
         output a \textbf{term} (a real number). We, of course,
         then, collect these outputs, and this is what we
-        generally see.
+        generally see.}
+
+
         \begin{remark*}
           \[ \{ a_{n} \}\]
           \[ \{ a_{n}\}_{n=1}^{\infty}\]
@@ -132,17 +109,13 @@ definition of convergence.}
 
           \end{remark*}
 
-    }}
 \end{center}
 
 \section{Convergence}
 \begin{center}
-  \fbox{
-    \parbox{\textwidth}{
-      \begin{definition}
-        Sequence Convergence
-      \end{definition}
-      \textbf{Informal Definition.}
+      \dfn
+        {Sequence Convergence}
+      {\textbf{Informal Definition.}
       \par A sequence $ \{ a_{n }\} $ converges to a limit $ L $
       if the terms get arbitrarily close to $ L $ as $ n $
       gets sufficiently large, which is also known as
@@ -157,18 +130,14 @@ definition of convergence.}
       \[ |a_{n}- L| < \varepsilon ~\textrm{for}~ n \geq N \]
 
       The preceding expression is also known as the $ \varepsilon - N $ proof.
-      \[ \]
-    }}
+      \[ \]}
 \end{center}
 
 \section{Divergence}
 \begin{center}
-  \fbox{
-    \parbox{\textwidth}{
-      \begin{definition}
-        Sequence Divergence
-      \end{definition}
-      \textbf{Informal Definition.}
+      \dfn
+        {Sequence Divergence}
+      {\textbf{Informal Definition.}
       \par
       A sequence diverges when it doesn't converge. If the sequence
       $ \{ a_{n }\} $ does not get arbitrarily close to limit $ L $
@@ -186,8 +155,6 @@ definition of convergence.}
       infinity, if, for every $ M < 0 $, there exists an $ N $
       such that
       \[ a_{n} < M ~ \textrm{whenever} ~ n > M \]
-
-    }
   }
 \end{center}
 
@@ -415,15 +382,10 @@ term FOLLOWING the current term is equal to some expression of the current term.
 
 \section{Defining Divergence}
 \begin{center}
-  \fbox{
-    \parbox{\textwidth}{
-      \begin{definition}
-        Sequence Divergence (Towards Infinity)
-      \end{definition}
-      A sequence $ \{ a_{n} \}$ diverges to positive infinity if for all $ M $, there is an $ N $ such that $ a_{n} > M $
+      \dfn{Sequence Divergence (Towards Infinity)}
+          {A sequence $ \{ a_{n} \}$ diverges to positive infinity if for all $ M $, there is an $ N $ such that $ a_{n} > M $
       for all $ n > N $
      }
-  }
 \end{center}
 \begin{center}
   \fbox{
@@ -885,7 +847,7 @@ diverges.
 This formula $ S_{n} = \frac{a(1-r^{n})}{(1-r)} $ represents the sum or value of any geometric series. However,
 how can we use this formula to determine the convergence and divergence of a geometric series?
 
-\subsection{Convergence and Divergence of the Geometric Series}
+\subsection{Convergence and Divergence of the Geiometric Series}
       Let us observe the behavior of the sum of a geometric series.
       \\
       \\
@@ -1000,7 +962,70 @@ as well as series convergence and series divergence.
 TODO
 
 \section{Telescoping Series}
-TODO
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Telescoping Series
+      \end{definition}
+      A series who general term $ t_{n} $ is of the
+      general form (the recursive formula)
+      \[ t_{n} = a_{n} - a_{n+1} \]
+      which form the sequence $ \{a_{n}\}$ in which
+      we find the difference of each consecutive term.
+      \par As a result, we will always just have
+      \textbf{two terms left in the telescoping series},
+      the first term as well as the \textbf{final term}
+      $ n + 1 $.
+      \par Note, that the cancellation technique we use
+      to negate consecutive terms within the sequence
+      is known as the \textbf{method of differences}.
+    }
+  }
+\end{center}
+\subsection{Telescoping Series Examples}
+\begin{remark*}
+  Find the sum of the following series:
+  \[ \sum_{n=1}^{\infty} \Biggr( \frac{1}{\sqrt{n + 3}} - \frac{1}{\sqrt{n+4}} \Biggr)\]
+\end{remark*}
+\begin{enumerate}
+  \item Like, as we solve with the elementary
+        series cases, let us write out the terms of
+        the series as a sequence and observe the pattern.
+        If we don't see a pattern there, then we can
+        observe a pattern between the partial sums of the
+        series.
+        \[ \textrm{let $ \{a_{n}\} $ be a sequence
+        for all terms of the sequence }\]
+        \[ \{a_{n}\} = a_{1} + a_{2} + a_{3} + \cdots +
+        a_{n} \]
+        \[ \Rightarrow \Biggr( \frac{1}{\sqrt{4}} -
+        \frac{1}{\sqrt{5}} \Biggr) , \Biggr( \frac{1}{\sqrt{5}} - \frac{1}{\sqrt{6}} \Biggr),
+        \Biggr( \frac{1}{\sqrt{6}} -
+        \frac{1}{\sqrt{7}} \Biggr), \]
+        \[
+        \Biggr( \frac{1}{\sqrt{n+2}} - \frac{1}{\sqrt{n + 3}} \Biggr), \cdots,
+        \Biggr( \frac{1}{\sqrt{n+3}} - \frac{1}{\sqrt{n+4}} \Biggr) \]
+  \item Now, we are able to just find the limit
+        of this sequence, since we can clearly see that the
+        terms between the first and the last term are
+        all going to cancel out through the method of
+        difference.
+        \[ \lim_{n \rightarrow \infty} \Biggr( \frac{1}{\sqrt{n+3}} - \frac{1}{\sqrt{n+4}} \Biggr)\]
+        \[ \Rightarrow \lim_{n \rightarrow \infty} \Biggr( \frac{1}{\infty} - \frac{1}{\infty} \Biggr)\]
+        \[ \Rightarrow 0 \]
+  \item Therefore, we can see that the $n$th term
+        of the sequence is just going to evaluate to 0,
+        so we take into account the value of the first term,
+        since all the intermediate terms all cancel each
+        other out.
+        \[ \sum_{n=1}^{\infty}a_{n} = \frac{1}{2} + 0 + 0 +
+        0 + \cdots + 0 \]
+        \[ \Rightarrow \sum_{n=1}^{\infty}a_{n} = \frac{1}{2}\]
+
+
+\end{enumerate}
+
 
 \section{nth-term Divergence Test}
 How can we actually determine when a series converges
@@ -1133,15 +1158,428 @@ other types of infinite series as well as how to approach them.
 \end{itemize}
 
 \subsection{Recap: nth term divergence test}
-TODO
+The \textbf{$n$th term divergence test} is
+one of the most basic \textbf{theorems for
+  series convergence}. Essentially, the
+theorem states that if the limit
+of the function of the series diverges
+to any number $ n $ where $ n \neq 0 $,
+then the series must diverge.
+\par It is important to remember, however,
+that the contrapositive of the statement is not
+true, as just because a series $ a_{n} $
+has a limit $ n $ where $ n = 0 $ does
+not mean that the series converges.
+
 \subsection{Recap: Combining Series}
 TODO
 \subsection{Recap: Telescoping Series}
-TODO
+A \textbf{Telescoping Series} is a unique
+case of series, in which we are able to
+conceptualize the series as a sequence
+in which all of the terms between the first
+and last term cancel each other out through
+\textbf{method of difference}. The reason
+this works is because the actual structure
+of the series formula $ a_{n} = f(n)$ for all
+$ n $ involves a difference of fractions, where
+the second term of this expression of fractions
+cancels itself out with the first term of the
+subsequent expression.
+
 \subsection{Recap: Partial Fraction Decomposition}
 TODO
 
 \section{Integral Test}
+\subsection{Non-Decreasing Partial Sums}
+Suppose that $ \sum_{n=1}^{\infty} a_{n}$ is an infinite
+series with $ a_{n} \geq 0 $ for all $ n $. Then,
+each partial sum is greater than or equal to its
+predecessor because $ s_{n+1} = s_{n} + a_{n} $, so
+\[ s_{1} \leq s_{2} \leq s_{3} \leq \cdots \leq s_{n}
+  \leq s_{n+1} \leq \cdots \]
+Since the partial sums form a non decreasing sequence,
+the Monotonic Sequence Theorem gives the following
+result.
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{corollary}
+        Corollary of Theorem 6
+      \end{corollary}
+      A series $ \sum_{n=1}^{\infty} a_{n}$ of nonnegative
+      terms converges if and only if its partial
+      sums are bounded from above.
+      \\ \\
+      \textbf{Layman Definition.} \\
+      Essentially, what we are saying is that,
+      by the Monotonic Convergence Theorem, which
+      states that positive, nondecreasing series
+      are bounded by a least upper bound $ L $ that
+      a series of nonnegative terms will only
+      converge if and only if it is bounded by
+      some upper bound.
+    }
+  }
+\end{center}
+
+\subsection{Integral Test Definition}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        The Integral Test
+      \end{thm}
+      Let $ \{a_{n}\}$ be a sequence of positive terms.
+      Suppose that $ a_{n} = f(n)$, where $ f $ is a
+      continuous, positive, decreasing function of
+      $ x $ for all $ x \geq N $, where $ N $ is a
+      positive integer. Then the series $ \sum_{n=N}^{\infty} a_{n}$ and the integral $ \int_{N}^{\infty} f(x)$ both
+      converge or both diverge.
+    }
+  }
+\end{center}
+
+\subsection{Integral Test Proof}
+We establish the test for the case $ N = 1 $. The proof
+for general $ N $ is similar.
+\par We start with the assumption that $ f $ is a decreasing
+function with $ f_{n} = a_{n} $ for every $ n $. This
+leads us to observe that the rectangles, which have
+the area $ 1 \times a_{n} $ (since the indices of series
+are only natural numbers $ \N$), collectively
+enclose more area than under the curve $ y = f(x)$ from
+$ x = 1 $ to $ x = n + 1 $. That is,
+\[ \int_{1}^{n+1} f(x)dx \leq a_{1} + a_{2} + \cdots +
+a_{n} \]
+If we orient the rectangles to be on the left
+of the value of the series at any index $ a_{n} $ while
+disregarding $ a_{1}$,
+we actually obtain the following inequality
+
+\[ a_{2} + a_{3} + \cdots + a_{n} \leq \int_{1}^{n} f(x)dx\]
+If we include the area of $ a_{1} $ in this inequality,
+then it has to follow this format
+\[ a_{1} + a_{2} + a_{3} + \cdots + a_{n} \leq a_{1} + \int_{1}^{n} f(x)dx\]
+Combining these inequalities yields this:
+\[ \int_{1}^{n+1} f(x)dx \leq a_{1} + a_{2} + a_{3} +
+  \cdots + a_{N} \leq a_{1} + \int_{1}^{n} f(x)dx \]
+This inequality yields the following implications:
+If $ \int_{1}^{\infty} f(x) $ is finite, then we know
+that the series $ \sum a_{n} $ must also be finite,
+since we know that the series must be smaller than
+than $ a_{1} + \int_{1}^{n} f(x)dx $. Additionally,
+if we know that $ \int_{1}^{\infty} f(x)dx $ is infinite,
+we know that the series $ a_{n} $ must also be infinite,
+since we know that $ \int_{1}^{n+1} $ must be smaller
+than the sum of the partial sums of the series. Hence,
+we know that the behavior of the series and the
+integral of the function of the series
+imply each other's behavior.
+
+\subsection{Integral Test Proof Intuition}
+The proof for the Integral Test requires a little bit
+of creativity, for sure. It mainly tests our intuitoin
+of how a series works geometrically and requires us to
+be able to discern a series as well as its function.
+\par As most things for series and sequence convergence,
+the proof requires us to recall the intuition that
+we utilize for the direct comparison test as well as
+any other comparison test. That is, we need to be able
+to remember that if one function is lesser than another,
+then these \textbf{inequalities create implications}.
+\par Recalling the direct comparison test, of course,
+we have to remember that whenever we have a situation
+with two series $ \sum a_{n} $ and $ \sum b_{n}$ like so
+\[ 0 \leq \sum a_{n} \leq \sum b_{n} \]
+We can see that if $ \sum b_{n} $ converges, then $ a_{n} $
+converges because we know that
+\[ a_{1} + a_{2} + a_{3} + \cdots + a_{n}
+  \leq b_{1} + b_{2} + b_{3} + \cdots + b_{n} \]
+and that if $ \sum b_{n}$ was finite, there's no possible
+way that $ \sum a_{n}$ could be infinite.
+\\
+\par We apply similar principles to this whenever
+we derive the \textbf{Integral Test Theorem}.
+Instead of comparing two different series, however,
+we are comparing the \textbf{geometric constructions
+  of both the series as well as the integral of the
+  function of the series}.
+\begin{center}
+    \includegraphics[width = 0.5 \textwidth]{int_test.png}
+\end{center}
+First, we start the proof with some
+assertions:
+\begin{itemize}
+  \item First, we need to assert that the
+        sum of the values of the series
+        is going to be greater
+        than that of the integral of the
+        function of the series.
+  \item Then, we must assert that a
+        section of the values
+        of the series are always going to
+        be less than the entire value of the integral.
+  \item Finally, we can derive
+        an inequality that essentially states
+        that area produced by
+        the entire integral is always
+        going to be less than the sum
+        of all values of the series, but
+        additionally, some ``shortened''
+        version of the sum of the values
+        of the series
+        is always going to be less than
+        some expression the integral.
+\end{itemize}
+By making the aforementioned assertions, we
+are able to more rigorously define the
+sum of the series as well as its relationship
+with the integral of the function of the series.
+\par At the start of the proof, we must assert
+that the sum of the series is always going to
+exceed the value of the area produced by the
+integral of the function of the series.
+\[ \textrm{let $ \sum a_{n} $ be a nonincreasing,
+    positive series}\]
+First, we define a function $ a_{n} = f_{n} $
+in which the function $ f $ is a function
+for all real numbers $ n $. We know that,
+based on the definition of the series that
+\[ \sum a_{n} \leq \int_{1}^{n+1} f(x)dx\]
+The reason why we set the bounds of the
+integral to be $ n + 1 $ is that, if we
+actually graph the integral, we can
+see that everything is ``shifted forward'',
+since of course, the value of $ a_{1}$ is
+going to apply for all $ 1 \leq x = 1 \leq 2 $.
+Essentially, we are stating that the
+graph created by the series is always going to
+be greater in value than the integral,
+since the value of $ a_{n}$ is going to be
+maintained until the next real number.
+\par Now, let us ``shift the graph,'' we can
+see that if we align the values of
+each term with the corresponding index,
+that everything will actually fit, similar
+to a finite Riemann Sum. However,
+because we are only considering the
+bounds from $ 1 $, we must omit
+$ a_{1}$, since the value of $ a_{1}$
+will actually be outside of our
+desired integral. Therefore,
+\[ a_{2} + a_{3} + a_{4} + \cdots + a_{n}\leq
+  \int_{1}^{n} f(x)dx \]
+Because $ a_{1}$ is not actually within
+the bounds in this case,
+we can rewrite the inequality as
+\[ a_{1} + a_{2} + a_{3} + \cdots + a_{n} \leq
+a_{1} + \int_{1}^{n} f(x)dx \]
+If we combine these inequalities together,
+we can see that the sum of all values of the series
+$a_{2}$ through $ a_{n}$ must be less than the area
+of the integral of the function of the series,
+but the sum of all values of the series
+must also exceed the area of the integral.
+\[ \int_{1}^{n+1} f(x)dx \leq a_{1} + a_{2} +
+  a_{3} + \cdots + a_{n} \leq a_{1} + \int_{1}^{n} f(x) dx\]
+Therefore, the behavior of both the integral
+and the series must imply the other's behavior.
+\begin{itemize}
+  \item If the sum of all values $ a_{n}$
+        of the series was finite,
+        then we know that, for the integral
+        to be smaller than the entire sum of
+        values $a_{n}$ must also be finite
+        (since if it diverged and was infinite,
+        then there would be no way that a finite
+        number could possibly be bigger than an
+        infinite number).
+  \item If the sum of all values $ a_{n}$
+        of the series was infinite, then we know
+        that in order for the entire area of the
+        integral to be larger than the
+        sum of the values of the series for
+        a section of the domain for some n
+         towards infinity, then the
+        area of the integral would also need
+        to be infinite.
+  \item If the integral of the function of the
+        series was finite, then we know
+        that in order for the area of the integral
+        to always be greater than some section
+        of the sum of the values of the series
+        from one point towards infinity, then
+        the values of the series must also
+        all be finite in order to be less than
+        the integral.
+  \item If the area of the integral was infinite,
+        then we know that in order to satisfy
+        the fact that the sum of all
+        values of the series are always
+        greater than the area of the integral,
+        then the sum of the values of the
+        series must also be infinite.
+\end{itemize}
+
+\section{P-Series Test}
+\subsection{Intuition}
+The intuition of the P-Series tests derives
+from the \textbf{Integral Test}.
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        P-Series Test
+      \end{definition}
+      Given a series in the form of
+      \[ \sum_{n=1}^{\infty} \frac{1}{n^{p}} \]
+      where $ p $ is some constant number,
+      then we know that for $ p > 1 $,
+      the series will diverge, while for
+      all values $ p \leq 1 $, the
+      series will converge. \\ \\
+      \textbf{Intuition.} \\
+      Essentially, this all derives back
+      to the \textbf{Integral Test} since,
+      if we actually evaluate the integral
+      for some value where $ p > 1 $, then
+      we see that the antiderivative will
+      yield a fraction with the exponentiated
+      term in the denominator, meaning
+      that if we were to solve the
+      improper integral with infinity,
+      then the antiderivative would converge,
+      since it would just go to zero.
+      \par On the other hand, however,
+      if we had a value of $ p \leq 1 $,
+      then we observe that the antiderivative
+      of this expression would either become
+      some expression of the natural logarithm
+      or, even worse, result in an antiderivative
+      that was not a fraction, such as if $ p = -1/2
+      \rightarrow P = 1/2 $, where $ P $
+      is the antiderivative of $ p $, which would
+      mean that, when evaluating the improper
+      integral, the antiderivative would diverge
+      and approach infinity.
+    }
+  }
+\end{center}
+
+\section{Error Estimation of the Integral Test}
+Whenever we were solving series
+such as the \textbf{Geometric Series} or the
+\textbf{Telescoping Series}, it was very
+easy for us to find the entire sum of
+these series. After all, with geometric
+series, there's a formula, and with the
+telescoping series, we can just cancel
+out terms. That being said though,
+the other series do not behave as nicely,
+as there's no easy way to actually
+derive their sum. Sure, we can just
+add up all the $ n $ terms, where $ n $
+is some arbitrarily large number to get
+the sum of the first $ n $ terms $ S_{n}$,
+but how can we actually gauge how accurate
+this is? By of course subtractin it
+from the sum $ S $, of course.
+\par First, let us declare some
+value $ R_{n} $ for remainder, which we can
+use as a way of gauging the
+accuracy of our estimate $ S_{n} $ compared
+to the actual sum of the series $ S $.
+\[ R_{n} = S - S_{n} \]
+If we take the entire value of the series,
+the sum $ S $ and subtract it from
+the value of the series up until
+the $ n$th term $ S_{n}$, we are just
+left with the sum of the remaining
+terms of the series.
+\[ R_{n} = S - S_{n} = a_{n+1} +
+  a_{n+2} + a_{n+3} + \cdots \]
+Now, let us think back to our visual
+intuitions of the \textbf{Integral Test}.
+We remember that we would ``offset'' the
+actual graph of the values of the series,
+making it so that the value of $ n $
+through $ n + 1 $ was actually $ f(n+1)$.
+Under the same exact bounds,
+if we compare the value of the integral
+from $ n $ to $ n+ 1$, we know
+that the value of the integral from
+all real numbers from $ n $
+, or $ f(n)$, to $ n+1 $, or $ f(n+1)$,
+is going to be greater or equal to
+$ f(n+1)$ for all real numbers between
+$ n $ and $ n + 1 $. Let the
+difference between the value
+of the function and the
+value of the series at any point
+be the remainder $ R_{n} $.
+Therefore,
+we can make the following assertions:
+\begin{itemize}
+  \item First, we know that the
+        area of all terms of the
+        series from the domain
+        $ [n+1, \infty) $ are going to be less than
+        the value of the integral from
+        $ [n, \infty]$.
+  \item Second, we know that the
+        area of the terms of the series
+        is going to be greater than
+        the value of the integral from the
+        domain of
+        $ [n+1, \infty) $.
+        \end{itemize}
+\[ R_{n} = a_{n+1} + a_{n+2} + a_{n+3} + \cdots
+\leq \int_{n}^{\infty} f(x)dx \]
+\[ R_{n} = a_{n+1} + a_{n+2} + a_{n+3} +
+  \cdots \geq \int_{n+1}^{\infty} f(x)dx \]
+\[ \Rightarrow \int_{n+1}^{\infty} f(x)dx \leq
+  R_{n} \leq \int_{n}^{\infty} f(x)dx \]
+\[ \Rightarrow S_{n} + \int_{n+1}^{\infty} f(x)dx \leq
+  R_{n} + S_{n} \leq S_{n} +  \int_{n}^{\infty} f(x)dx \]
+\[ \Rightarrow S_{n} + \int_{n+1}^{\infty} f(x)dx \leq
+  S  \leq S_{n} +  \int_{n}^{\infty} f(x)dx \]
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Bounds for the Remainder in the Integral Test
+      \end{definition}
+      Suppose $ \{a_{n}\}$ is a sequence of positive
+      terms with $ a_{k} = f(k)$, where $ f $ is a
+      continuous positive decreasing function
+      of all $ x $ for all $ x \geq n $, and that
+      $ \sum a_{n}$ converges to $ S $. Then
+      the remainder $ R_{n} = S - S_{n} $ where
+      $ S $ is the sum at which the series
+      converges to and $ S_{n}$ is the
+      $n$th sum of the series. Then,
+      the remainder of $ R_{n} = S - S_{n} $
+      satisfies the inequalities:
+      \[ \Rightarrow \int_{n+1}^{\infty} f(x)dx \leq
+  R_{n} \leq \int_{n}^{\infty} f(x)dx \]
+    }
+  }
+\end{center}
+
+The real question here is, so what? Knowing
+this inequality, we are able to solve
+for the sum of a series given any $ n$th
+term of a series.
+
+\begin{remark*}
+  Estimate the sum of the series $ \sum \frac{1}{n^{2}}$
+  given $ n = 10 $.
+\end{remark*}
+
+
 
 % 10.4: Comparision Tests (04/07/23)
 \chapter{10.4: Comparision Tests (04/07/23)}
@@ -1180,21 +1618,27 @@ which is also deonted as $ n \rightarrow \infty $.
   \fbox{
     \parbox{\textwidth}{
       \begin{definition}
-        The Comparison Test
+        The Comparison Test (also known as the
+        \textbf{Direct Comparison Test})
       \end{definition}
+      The entire concept of the \textbf{Direct Comparison
+        Test} stems from the idea of \textbf{tails},
+      that is, the behavior of the series
+      as the domain $ (D \in \N) \rightarrow \infty $.
+      The series $ \sum_{n=1}^{\infty} a_{n}$ can only converge
+      if and only if its tail $ \sum_{n=k}^{\infty} a_{n}$
+      converges, where $ k $ is some term after
+      the initial term $ n $ in the domain $ D $.
       \[ \sum_{n=1}^{\infty} a_{n} \textrm{ converges if
           and only if } \sum_{n=k}^{\infty} a_{k}
         \textrm{ converges, where $ k $ is some value
-          after $ n $} \]
+          after $ n $.} \]
       We can think of the difference between these
       two sums as
       \[ \sum_{n=1}^{\infty} a_{n} - \sum_{n=k}^{\infty} a_{n}
         = \sum_{n=1}^{k} a_{n} \]
-      since we can think of the resulting sum
-      as the series terms $ a_{n} $ between $ n $ and $ k $,
-      or $ 1 < n < k $.
       \par From this, we know that if
-      \[ 0 \leq a_{n} \leq b_{n} ~ \forall n, \textrm{ then }\]
+      \[ 0 \leq a_{n} \leq b_{n} ~ \forall ~ n \textrm{ after some point $ N $, then }\]
       \begin{enumerate}
         \item If $ \sum b_{n} $ converges, then
               this implies $ \sum a_{n} $ also converges
@@ -1218,16 +1662,154 @@ Show that $ \sum b_{n} $ also diverges to $ + \infty$.
 \[\textrm{let $A_{n} = \sum_{k=1}^{n} a_{k}$ and
     $B_n = \sum_{k=1}^{n}b_{k}$. }\]
 
-We must demonstrate that $\forall M, \exists N $, such that
+We must demonstrate that $\forall~ M, \exists ~ N $, such that
 $ B_{n} > M $, $\forall n > N $. (We must demonstrate
 that for all M, there exists such a value N that
 $ B_{n} > M $ for all values of $ n > N $, where
 M is some lower bound of $ B_{n} $ and $ n$ and $ N$ are indices
 of the series).
+\begin{enumerate}
+  \item First, we create some ``challenge'' variable
+        that defines all values of $ B_{n} $. Let
+        us state that our objective is to demonstrate that  $ B_{n} $ is
+        greater than some aribtrarily large value
+        $ M $ at some point $ n > N $.
+  \item Then, let us define the series $ \sum a_{n}$
+        and its relationship to the series $ \sum b_{n}$.
+        \[ A_{n} = \sum_{n=1}^{\infty} a_{n}\]
+        \[ A_{n} \leq B_{n} \]
+  \item Let us perform some algebra that
+        defines the variables we are working
+        with and how they are working in relation
+        to each other.
+
+\[ A_{n} = a_{1} + a_{2} + a_{3} + \cdots +
+  a_{n} \leq b_{1} + b_{2} + b_{3} + \cdots + b_{n}
+  = B_{n} \]
+        \[ A_{n} = a_{1} + a_{2} + a_{3} + \cdots +
+        a_{n} = \infty \leq B_{n} \]
+  \item Now, we use our algebra and make some
+        conclusions.
+        \begin{itemize}
+          \item Because we know that $ \sum a_{n}
+                \rightarrow \infty$, then we know
+                that at some point $ n > N $,
+                $ \sum a_{n} > M ~ \forall ~ n > N $
+          \item In order to satisfy the inequality,
+                this must mean that there exists
+                some value $ N $ such that $ \sum b_{n}
+                > M ~ \forall ~ n > N $, which
+                brings us back to our initial statement.
+        \end{itemize}
+
+
+\end{enumerate}
+
 \section{P-Series Test}
-TODO
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        P-Series Test
+      \end{definition}
+
+    }
+  }
+\end{center}
+
 \section{Limit Comparison Test}
-TODO
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        Limit Comparison Test
+      \end{thm}
+      Suppose that $ a_{n} > 0 $ and $ b_{n} > 0 $
+      for all $ n \geq N $ (where $N$ is an integer)
+      \begin{enumerate}
+        \item If $ \lim_{n \rightarrow \infty}
+              \frac{a_{n}}{b_{n}} = c $ and
+              $ c > 0 $ then $ \sum a_{n} $ and
+              $ \sum b_{n} $ both converge or
+              both diverge.
+        \item If $ \lim_{n \rightarrow \infty}
+              \frac{a_{n}}{b_{n}} = 0 $ and
+              $ \sum b_{n} $ converges, then $ \sum a_{n}$
+              converges.
+        \item If $ \lim_{n \rightarrow \infty}
+              \frac{a_{n}}{b_{n}} = \infty $ and
+              $ \sum b_{n} $ diverges, then $ \sum a_{n} $
+              diverges.
+      \end{enumerate}
+      \[ \textrm{let $ a_{n} $ be a series, let $ b_{n}$
+          be a series that behaves like $ a_{n} $}\]
+      \[ \textrm{let $ c $ be the limit of $ \lim_{n \rightarrow \infty}
+          \frac{a_{n}}{b_{n} }$}\]
+      \[ \lim_{n \rightarrow \infty} \frac{a_{n}}{b_{n}}
+        =
+        \begin{cases}
+          c > 0, \textrm{ then $ \sum a_{n} \Leftrightarrow \sum b_{n}$   }
+          \\
+          c = 0, \textrm{ then if $ \sum b_{n}$ converges,
+          $ \sum a_{n} $ converges}
+          \\
+          c = \infty, \textrm{ then if $ \sum b_{n} $
+          diverges, $ \sum a_{n}$ diverges}
+        \end{cases}
+      \]
+      \textbf{Layman Definition.} \\
+      The \textbf{Limit Comparison Test} is a
+      \textbf{series convergence test} theorem
+      that states that if we have a series
+      $ \sum a_{n} $ and we are able to compare
+      to a series that we expect to have the
+      same behavior $ \sum b_{n} $, we
+      can evaluate the limit of the ratio
+      between $ \sum a_{n} $ and $ \sum b_{n} $
+
+    }
+  }
+\end{center}
+\subsection{Limit Comparison Test Intuition}
+
+\section{Limit Comparison Test Proof}
+\subsection{Limit Comparison Part 1 Proof}
+Since we know that $ \frac{c}{2} > 0 $, since
+$ c > 0 $, there exists some integer $ N $
+such that
+\[ \Biggr| \frac{a_{n}}{b_{n}} - c \Biggr| <
+  \frac{c}{2}, \textrm{ whenever $ n > N$} \]
+We draw this conclusion from the
+\textbf{definition of a limit for series}, which
+we recall as
+\[ \Biggr| a_{n} - L \Biggr|
+  < \varepsilon \textrm{ for some $ n \geq N $ } \]
+From this, we are able to expand the inequality
+to
+\[ - \frac{c}{2} < \frac{a_{n}}{b_{n}} - c  <
+  \frac{c}{2} \]
+\[ \Rightarrow - \frac{c}{2} + c < \frac{a_{n}}{b_{n}} - c
+  + c <
+  \frac{c}{2} + c \]
+\[ \Rightarrow \frac{c}{2} < \frac{a_{n}}{b_{n}}
+  < \frac{3c}{2}\]
+\[ \Rightarrow \Biggr( \frac{c}{2} \Biggr) b_{n}
+  < a_{n}
+  < \Biggr( \frac{3c}{2} \Biggr) b_{n}\]
+
+If $ \sum b_{n} $ converges, then $ \sum (\frac{3c}{2})b_{n}$
+converges and $ \sum a_{n} $ converges by the
+\textbf{Direct Comparsion Test}. If $ \sum b_{n} $
+diverges, then $ \sum (\frac{c}{2}) b_{n} $ diverges
+and $ \sum a_{n}$ diverges by \textbf{Direct Comparison
+Test}.
+
+
+\subsection{Limit Comparison Part 2 Proof}
+\subsection{Limit Comparison Part 3 Proof}
+
+
+
 
 
 
@@ -1271,13 +1853,65 @@ However, in order to supplmeent our learning we need to learn about how to build
   \fbox{
     \parbox{\textwidth}{
       \begin{definition}
-        Direct Comparison Test
+        Direct Comparison Test (Theorem 10)
       \end{definition}
-      TODO
+      Let $ \sum a_{n} $ and $ \sum b_{n} $ be two
+      series with $ 0 \leq a_{n} \leq b_{n} $ for
+      all $ n $. Then
+      \begin{enumerate}
+        \item If $ \sum b_{n} $ converges, then
+              $ \sum a_{n} $ also converges
+        \item If $ \sum a_{n} $ diverges, then
+              $ \sum b_{n} $ also diverges
+      \end{enumerate}
+      \\
+      \textbf{Layman's Definition.} \\
+      Essentially, it doesn't actually matter what
+      $ a_{n} $ or $ b_{n} $ are, the idea
+      is just being able to understand the implications
+      of a series that exists inside of another series.
+      Whenever the partial sums of one series are smaller
+      than another, it makes sense that if the ``smaller''
+      series diverges, then the bigger series must also
+      diverge. This applies, of course, only to series
+      that diverge towards infinity.
+      \par On the other hand, if we know that the
+      bigger series converges, than we know that the smaller
+      series could not possibly diverge to infinity,
+      since we know that the larger series is finite.
+
+
     }
   }
 \end{center}
 
+\subsection{Direct Comparison Test Proof}
+The series $ \sum a_{n} $ and $ \sum b_{n} $
+have non-negative terms. The Corrollary of Theorem 6
+in Section 10.3 states that the series $ \sum a_{n} $
+and $ \sum b_{n} $ converge if and only if their
+partial sums are bounded from above.
+\par In Part (1) we assume that $ \sum b_{n} $ converges
+to some number $ M $. The partial sums $ \sum_{n=1}^{N} a_{n}$ are all bounded from above by $ M = \sum b_{n} $,
+since we know that
+\[ s_{N} = a_{1} + a_{2} + a_{3} + \cdot + a_{N}
+  \leq b_{1} + b_{2} + b_{3} + \cdots b_{N} \leq
+  \sum_{n=1}^{\infty} b_{n} = M \]
+
+Since the partial sums of $ \sum a_{n} $ are bounded
+from above, the Corrollary of Theorem 6 states implies
+that $ \sum a_{n} $ converges. We conclude that when
+$ \sum b_{n} $ converges, then so does $ \sum a_{n} $.
+\par In Part (2) of Theorem 10, where we assume that
+$ \sum a_{n} $ diverges, the partial sums of $ \sum b_{n} $
+are not bounded from above. If they were, then the partial
+sums of $ \sum a_{n} $ would also be bounded from
+above, since
+\[ a_{1} + a_{2} + a_{3} + \cdots + a_{N} \leq
+  b_{1} + b_{2} + b_{3} + \cdots + b_{N}\]
+and this would mean that $ \sum a_{n} $ converges.
+We can conclude that if $ \sum a_{n} $ diverges, then
+so does $ \sum b_{n} $.
 \section{Limit Comparison Test}
 \subsection{Intuition}
 Recall the \textbf{Constant Multiple Rule for Sequences}, which essentially
@@ -1352,10 +1986,35 @@ Introduce the \textbf{Limit Comparison Test}.
       \begin{definition}
         Absolute Convergence
       \end{definition}
+      A series $ \sum a_{n} $ \textbf{converges
+        absolutely} (or is \textbf{absolutely convergent})
+      if the corresponding series of absolute values,
+      $ \sum |a_{n}|$ also converges.
+      \[ \sum a_{n} \textrm{ converges absolutely i.f.f. }
+      \sum |a_{n}| \textrm{ also converges }\]
 
     }
   }
 \end{center}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{thm}
+        The Absolute Convergence Test (Theorem 12)
+      \end{thm}
+      If $ \sum |a_{n}|$ converges, then $ \sum_{n=1}^{\infty}
+      a_{n}$ converges.
+      \\ \\
+      \textbf{Warning.} \\
+      Remember that the \textbf{converse} is not true.
+      A convergent series does not imply that
+      the corresponding series of absolute values
+      converges.
+    }
+  }
+\end{center}
+
 
 
 \section{The Ratio Test and the Root Test}
@@ -1408,6 +2067,31 @@ series of the form
 We want to analyze the $ r $, since we can recall that as long as $ |r| < 1 $, then
 the series will converge.
 
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Ratio Test
+      \end{definition}
+      Given a series $ \sum a_{n} $
+
+      \[ \sum a_{n} = \lim_{n \rightarrow \infty}
+        \frac{|a_{n+1}|}{|a_{n}|} =2
+        \begin{cases}
+          c < 1, \textrm{ $ \sum a_{n} \Rightarrow $ \textbf{absolutely
+          convergent}}
+          \\
+          c > 1, \textrm{ $ \sum a_{n} \Rightarrow $ \textbf{divergent}}
+          \\
+          c = 1 \textrm{ or DNE }, \textrm{ the ratio
+          test is inconclusive }
+        \end{cases}
+      \]
+    }
+  }
+\end{center}
+
+
 % 10.6: Alternating Series and Conditional Convergence
 \chapter{10.6: Alternating Series and Conditional Convergence (04/12/23)}
 
@@ -1420,7 +2104,16 @@ the series will converge.
 \end{itemize}
 
 \section{Objectives}
-TODO
+By the end of this section we want to be able to:
+\begin{enumerate}
+  \item Be able to understand the conditions and
+        underlying intuition of the
+        \textbf{Alternating Series Test}
+  \item Be able to differentiate and define
+        \textbf{absolutely converging} and
+        \textbf{conditionally converging} series
+\end{enumerate}
+
 \section{Recall}
 TODO
 
@@ -1490,7 +2183,17 @@ will eventually approach 0, then we can state
 that the actual sum of the series will stop at
 some limit $ L $.
 \begin{center}
-  \textbf{TODO: Insert Graphic displaying the difference}
+  \includegraphics[width = 0.85 \textwidth]{./abstest1.png}
+  \\
+  \textbf{Figure 1. (above)} Graphing out the partial sums of the series.
+  \includegraphics[width = 0.85 \textwidth]{./abstest2.png}
+  \\
+  \textbf{Figure 2. (above)} Shifting the partial sums as to demonstrate
+  the error estimation or remainder $ R_{n}$ for between
+  the partial sums. The most important thing to pay
+  attention here for is the decreasing remainder $ R_{n} $,
+  since it demonstrates how the actual sum of the series
+  actually stops decreasing at some point.
 \end{center}
 
 \begin{center}
@@ -1585,6 +2288,20 @@ TODO
 
 \end{remark*}
 
+
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        General Algorithm for Alternating Series Test
+      \end{definiion}
+
+    }
+  }
+\end{center}
+
+
 \section{Conditional Convergence}
 \begin{center}
   \fbox{
@@ -1600,7 +2317,17 @@ TODO
 \end{center}
 
 \subsection{Conditional Convergence Intuition}
-TODO
+Conditional convergence is mainly a concept that is
+utilized alongside \textbf{absolute convergence and
+  the alternating series test}, as we figure out
+that through algebraic manipulation, also known as
+literally just utilizing the absolute value signs, or
+through rearrangement of the series, that the same
+series might not actually converge under different
+conditoins.
+\par Essentially, if a series does not
+\textbf{absolutely converge},
+then it is \textbf{conditionally converging}.
 
 \section{Rearranging Series}
 \begin{center}
@@ -1647,8 +2374,152 @@ TODO
   }
 \end{center}
 
+\section{Writing Proofs}
+\subsection{Proofs Who?}
+Whenever we are writing proofs, it is important to consider
+these four elemnents:
+\begin{itemize}
+  \item Definitions (Theorems, etc)
+  \item Ideas
+  \item Roadmap
+
+\end{itemize}
+
+\section{Types of Proofs}
+In mathematics, there are four commonly used proof
+types:
+\begin{itemize}
+  \item Direct Proofs
+  \item Proofs by Contradiction
+  \item Proofs by Induction
+  \item Proofs by Contrapositive
+
+\end{itemize}
+
+\begin{center}
+  \fbox{
+    \parbox{\textwidth}{
+      \begin{definition}
+        Direct Proofs
+      \end{definition}
+      TODO
+    }}
+\end{center}
+
+\begin{center}
+    \fbox{
+      \parbox{\textwidth}{
+        \begin{definition}
+          Proofs by Contradiction
+        \end{definition}
+        TODO
+    }}
+\end{center}
+
+\begin{center}
+    \fbox{
+      \parbox{\textwidth}{
+        \begin{definition}
+          Proofs by Induction
+        \end{definition}
+        TODO
+    }}
+\end{center}
+
+\begin{center}
+    \fbox{
+      \parbox{\textwidth}{
+        \begin{definition}
+          Proofs by Contrapositive
+        \end{definition}
+        TODO
+    }}
+\end{center}
 
 
+
+
+\begin{remark*}
+  Given that $ \{a_{n}\} $is a nondecreasing, bounded
+  sequence and that $ L $ is a least upper bound of the
+  sequence $ \{a_{n}\}$, prove that
+  \[ \lim_{n \rightarrow \infty} a_{n} = L \]
+\end{remark*}
+\begin{center}
+  \graphic
+\end{center}
+
+
+% 10.6: Proof Writing
+\chapter{Proof Writing (04/14/23)}
+\section{Reminders for Math\_226}
+\begin{itemize}
+  \item \textbf{Midterm 1} is on \textbf{Tuesday, April 18, 2023}
+  \item \textbf{MyLab Math 8: Alternating Series and Conditional Convergence} is due
+        on \textbf{Monday, April 17, 2023}.
+
+\end{itemize}
+\section{Reminders for Math\_230-1}
+\begin{itemize}
+  \item \textbf{MyLab 7: Cylinders and Quadric Surfaces}
+  \item \textbf{MyLab 8: Polar Coordinates} is
+        \item \textbf{Midterm 1} is on \textbf{Tuesday, April 25, 2023}
+\end{itemize}
+
+\section{Motivation}
+\section{Intro to Proofs}
+\subsection{Types of Proofs}
+\section{Scaffold of a Proof}
+\begin{itemize}
+  \item
+
+\end{itemize}
+
+
+\section{Methodology}
+\begin{itemize}
+  \item
+
+\end{itemize}
+
+% Midterm 1 Study Guide
+\chapter{Midterm 1 Study Guide}
+
+\section{Reminders}
+\href{https://docs.google.com/spreadsheets/d/1TyioZztD7VCczgR6k3s6krNdZ__pRMtqVNYFrWhcSLc/edit#gid=0}{\underline{Homework Spreadsheet Link}}
+\subsection{MATH\_226-0 Reminders}
+\begin{itemize}
+  \item \textbf{MyLab Math 9: Alternating Series and
+        Conditional Convergence} is due on \textbf{Monday, April 17, 2023}.
+  \item \textbf{Midterm 1} is on \textbf{Tuesday,
+        April 18, 2023} during \textbf{discussion}.
+  \item \textbf{Written Homework 4} is due on
+        \textbf{Friday, April 21, 2023}.
+\end{itemize}
+\subsection{MATH\_230-1 Reminders}
+\begin{itemize}
+  \item \textbf{MyLab Math 7: Cylinders and
+        Quadric Surfaces} is due on \textbf{Tuesday,
+        April 18, 2023}.
+  \item \textbf{MyLab 8: Polar Coordinates} is due
+        on \textbf{Thursday, April 20, 2023}.
+  \item \textbf{Written Homework 2} is due on
+        \textbf{Wednesday, April 19, 2023}.
+  \item \textbf{Midterm 1} is on \textbf{Tuesday,
+        April 25, 2023}.
+\end{itemize}
+
+\section{Topics to Study}
+
+\section{Sequence Convergence}
+\section{Series Intuition}
+\section{Geometric Series}
+\section{Integral Test}
+\section{Comparison Tests}
+\section{Absolute Convergence and the Ratio + Root Test}
+\section{Alternating Series Test and Conditional
+  Convergence}
+\section{}
 
 % 10.6: Strategies for Analyzing Convergence
 \chapter{10.6: Strategies for Analyzing Convergence}
@@ -1656,42 +2527,7 @@ TODO
 \section{Motivation}
 
 %%%%%%%%%%%% MIDTERM 1 DONE %%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{10.7 (Part One): Power Series}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.7 (Part Two): Radius and Interval of Convergence}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.7 (Part Three): Manipulation of Series (Part One)}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.7 (Part Four): Manipulation of Series (Part Two)}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.8 (Part One):}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.8 (Part Two):}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.9: Convergence of Taylor Series}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.10: Applications of Taylor Series}
-\section{Reminders}
-\section{Motivation}
-\chapter{A7 (Part One): Complex Numbers (Part One)}
-\section{Reminders}
-\section{Motivation}
-\chapter{10.10, A7 (Part Two): Complex Numbers (Part Two)}
-\section{Reminders}
-\section{Motivation}
-\chapter{19.1 (Part One): Vectors}
-\section{Reminders}
-\section{Motivation}
-\chapter{19.1 (Part Two): Inner Products}
-\section{Reminders}
-\section{Motivation}
+\include{midterm2.tex}
 %%%%%%%%%%%% MIDTERM 2 DONE %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{19.2 (Part One): Functions as Vectors, Periodic
@@ -1706,7 +2542,69 @@ TODO
 \section{Motivation}
 \chapter{19.5 (Part One): Applications (Part One)}
 \section{Reminders}
+\subsection{MATH\_226}
+\begin{enumerate}
+  \item \textbf{Written Homework 9: Second-Order Linear Differential Equations} is due on \textbf{Friday, 26, 2023}.
+\end{enumerate}
+
+\subsection{MATH\_230}
+\begin{enumerate}
+  \item \textbf{Written Homework 5} is due on \textbf{
+        Wednesday, May 24, 2023}.
+  \item \textbf{MyLab Math 17: Tangent Planes
+        and Linearization} is due \textbf{tomorrow,
+        May 23, 2023}.
+  \item \textbf{MyLab Math 18: Taylor's Formula
+        } is due \textbf{tomorrow May 23, 2023}.
+\end{enumerate}
+
 \section{Motivation}
+Throughout the entire ocurse, we have touched
+on sequences, series, and how to use them in numerous
+different contexts, such as Fourier Series. Now,
+however, we want to take our series manipulations
+in another direction. For exapmle, what if
+we want to approximate the temperature, while
+considering all possible conditions?
+
+\section{Brief Introduction to Differntial Equations (17.1)}
+\dfn{Second-Order Linear Differential Equations}{
+  A \textbf{second-order linear differential equation} is an equation that involves a function $y(x)$ as
+  well as its derivatives, usually taking on the
+  following form
+  \begin{equation}\label{eq1}
+    P(x)y''(x) + Q(x)y'(x) + R(x)y(x) = G(x)
+  \end{equation}
+
+  There are two different types of second-order
+  linear differential equations:
+\begin{itemize}
+  \item Homogeneous Linear Differential Equations
+  \item Heterogeneous Linear Differential
+        Equations
+\end{itemize}
+}
+
+\dfn{Homogeneous Linear Differential Equations}{
+  Given the equation \eqref{eq1}, a \textbf{homogeneous linear differential equation} is an equation
+  in which $ G(x)$ is equal to zero for all
+  values of $ x$ over an interval $ I $.
+  This results in the following differential equation
+  \begin{equation}\label{eq2}
+    P(x)y''(x) + Q(x)y'(x) + R(x)y(x) = 0
+  \end{equation}}
+\dfn{Heterogeneous Linear Differential Equations}{
+  By contrast, a \textbf{heterogeneous linear differential
+    equation } is one in which $G(x) \neq 0$ for
+  all values of $ x $ over an interval $ I $.}
+
+\section{Evaluating Differential Equations with Power Series (17.5)}
+Among the numerous ways we are able to evaluate
+differential equatoins, we can actually apply
+our familiarity with \textbf{power series} in order
+to evaluate differential equations.
+
+
 \chapter{19.5 (Part Two): Applications (Part Two)}
 \section{Reminders}
 \section{Motivation}
